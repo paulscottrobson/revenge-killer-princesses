@@ -13,6 +13,7 @@
 #define _GFX_H
 
 #include <SDL.h>
+#include <SDL_Audio.h>
 
 #define GFXKEY_BASE 		(1)
 
@@ -66,5 +67,18 @@ void GFXSetCharacterSize(int xSize,int ySize);
 void GFXDefineCharacter(int nChar,int b1,int b2,int b3,int b4,int b5);
 
 void GFXXRender(SDL_Surface *surface);
+void GFXSetFrequency(int freq);
+
+class Beeper
+{
+private:
+	double freq;
+    double v;
+public:
+    Beeper();
+    ~Beeper();
+    void setFrequency(double freq);
+    void generateSamples(Sint16 *stream, int length);
+};
 
 #endif

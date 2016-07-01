@@ -70,9 +70,11 @@ void GFXXRender(SDL_Surface *surface) {
 			if (CMDKEY(DBGKEY_RESET)) {												// Reset processor (F1)
 				DEBUG_RESET();					
 				addressSettings[0] = DEBUG_HOMEPC();
+				GFXSetFrequency(0);
 			}
 
 			if (inRunMode == 0) {
+				GFXSetFrequency(0);													// Will drive us mental otherwise.
 				if (isxdigit(currentKey)) {											// Is it a hex digit 0-9 A-F.
 					int digit = isdigit(currentKey)?currentKey:(currentKey-'A'+10);	// Convert to a number.
 					int setting = 0;												// Which value is being changed ?

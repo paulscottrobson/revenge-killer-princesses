@@ -1,3 +1,15 @@
+; ************************************************************************************************************
+; ************************************************************************************************************
+;
+;									Revenge of the Killer Princesses
+;									================================
+;
+;								  Written by Paul Robson June/July 2016
+;	
+;	  Written for the Cosmac VIP but should port to other 1802/1861 devices with sufficient RAM memory.
+;
+; ************************************************************************************************************
+; ************************************************************************************************************
 
 	include 1802.inc
 
@@ -20,8 +32,25 @@ Main:
 	sex 	r2 																	; turn video on
 	inp		1
 
-	call 	r4,CreateMaze
-	call 	r4,ResetPlayer
+; ************************************************************************************************************
+; ************************************************************************************************************
+;
+;											Initialisation code
+;
+; ************************************************************************************************************
+; ************************************************************************************************************
+
+	call 	r4,CreateMaze 														; create the maze
+	call 	r4,ResetPlayer 														; reset the player
+
+; ************************************************************************************************************
+; ************************************************************************************************************
+;
+;												Come here to repaint
+;	
+; ************************************************************************************************************
+; ************************************************************************************************************
+
 Repaint:
 	call 	r4,RepaintDisplay 													; clear screen and draw walls
 
@@ -30,11 +59,11 @@ Repaint:
 	inc 	rc
 	str 	rc 																	; save in vector[0]
 	inc 	rc 																	; set up vector to point to 1st element
-	lri 	r4,DrawPlayerViewAtDepth 
 
-	ldi 	0
+	lri 	r4,DrawPlayerViewAtDepth 											; draw maze at given depth
+	ldi 	0 																	; draw at each level
 	recall 	r4
-	bdf 	__RepaintExit
+	bdf 	__RepaintExit 														; abandon draw on solid wall
 	ldi 	1
 	recall 	r4
 	bdf 	__RepaintExit
@@ -44,10 +73,11 @@ Repaint:
 	ldi 	3
 	recall 	r4
 __RepaintExit:
+
 	ldi 	(ppVector & 255)													; fix up the vector pointer to [0]
 	plo 	rc
 	ldn 	rc 																	; reread the first player position
-	dec 	rc
+	dec 	rc 																	; we changed it so copy it from the vector
 	str 	rc 																	; update actual player position.
 
 	call 	r4,MirrorDisplay 													; mirror top of display to bottom
@@ -61,12 +91,13 @@ __RepaintExit:
 	ani 	3
 	str 	r4
 
-	lri 	r4,40000
+	lri 	r4,30000
 delay:
 	dec 	r4
 	ghi 	r4
 	bnz 	delay	
 	br 		Repaint
+
 wait:
 	br 		wait
 
@@ -84,14 +115,21 @@ code:
 ;
 	org 	code+100h
 	include door.asm 															; door "opening" code. ($3C)
-	include player.asm 															; player reset and depth view ()
-
+	include player.asm 															; player reset/depth view ($B0)
+;
+;	Block 2
+;
+	org	 	code+200h
 
 	org  	stack-240h 															; put gfx data at the end.	
 SpriteData:	
-	include graphics.inc
+	include graphics.inc 														
 ;
 ;	TODO: 	
+;			Sprite drawing 
 ;			Put princesses in the maze.
 ;			Add visual on princesses
-;			Add basic control ?
+;			Add movement around
+; 			Add closeness sound effect
+; 			Add heartbeat and adjustment
+; 			Consider a back-buffer ?

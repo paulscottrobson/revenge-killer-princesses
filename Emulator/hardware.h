@@ -12,6 +12,8 @@
 #ifndef _HARDWARE_H
 #define _HARDWARE_H
 
+#define QFREQUENCY 		1535000
+
 void HWISetPageAddress(WORD16 r0);
 WORD16 HWIGetPageAddress(void);
 void HWISetScreenOn(BYTE8 isOn);

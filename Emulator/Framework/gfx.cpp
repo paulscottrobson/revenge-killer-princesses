@@ -11,8 +11,12 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <memory.h>
 #include <ctype.h>
 #include "gfx.h"
+#include <queue>
+#include <cmath>
+
 
 static SDL_Window *mainWindow = NULL;
 static SDL_Surface *mainSurface = NULL;
@@ -25,6 +29,8 @@ static int background;
 static void _GFXInitialiseKeyRecord(void);
 static void _GFXUpdateKeyRecord(int scancode,int isDown);
 
+static Beeper beeper;
+
 // *******************************************************************************************************************************
 //
 //								Open window of specified size, set title and background.
@@ -33,7 +39,7 @@ static void _GFXUpdateKeyRecord(int scancode,int isDown);
 
 void GFXOpenWindow(const char *title,int width,int height,int colour) {
 
-	if (SDL_Init( SDL_INIT_VIDEO ) < 0)	{											// Try to initialise SDL Video
+	if (SDL_Init( SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0)	{							// Try to initialise SDL Video and Audio
 		exit(printf( "SDL could not initialize! SDL_Error: %s\n", SDL_GetError()));
 	}
 
@@ -72,6 +78,7 @@ void GFXStart(void) {
 		GFXXRender(mainSurface);													// Ask app to render state.
 		SDL_UpdateWindowSurface(mainWindow);										// And update the main window.
 	}
+	SDL_CloseAudio();
 }
 
 // *******************************************************************************************************************************
@@ -266,14 +273,28 @@ int  GFXIsKeyPressed(int character) {
 //
 //												Convert character to ASCII
 //
+//	UK Keyboard layout, will probably behave bizarrely elsewhere.
 // *******************************************************************************************************************************
 
 int  GFXToASCII(int ch,int applyModifiers) {
 	if (ch >= ' ' && ch < 127) {													// Legitimate key.
 		ch = tolower(ch);
+		if (ch == '@') ch = '\'';													// @ is actually '
 		if (applyModifiers != 0) {
 			if (GFXIsKeyPressed(GFXKEY_SHIFT)) {
-				if (ch == ';') ch = ':'; else ch = ch ^ (ch < 64 ? 0x10:0x20);		// Handle shifts
+				switch(ch) {
+					case '\'':	ch = '@';break;
+					case '-':	ch = '_';break;
+					case '#':	ch = '~';break;
+					case '=':	ch = '+';break;
+					case ';':	ch = ':';break;
+					case '6':	ch = '^';break;
+					case '7':	ch = '&';break;
+					case '8':	ch = '*';break;
+					case '9':	ch = '(';break;
+					case '0':	ch = ')';break;
+					default:	ch = ch ^ ((ch < 64) ? 0x10:0x20);break;
+				}
 			}
 			if (GFXIsKeyPressed(GFXKEY_CONTROL)) ch = ch & 31;						// Handle control
 		}
@@ -297,4 +318,74 @@ int  GFXToASCII(int ch,int applyModifiers) {
 
 int  GFXTimer(void) {
 	return SDL_GetTicks();
+}
+
+// *******************************************************************************************************************************
+//
+//													Audio 
+//
+// *******************************************************************************************************************************
+
+const int AMPLITUDE = 28000;
+const int FREQUENCY = 44100;
+
+void audio_callback(void*, Uint8*, int);
+
+Beeper::Beeper()
+{
+    SDL_AudioSpec desiredSpec;
+
+    desiredSpec.freq = FREQUENCY;
+    desiredSpec.format = AUDIO_S16SYS;
+    desiredSpec.channels = 1;
+    desiredSpec.samples = 2048;
+    desiredSpec.callback = audio_callback;
+    desiredSpec.userdata = this;
+
+    SDL_AudioSpec obtainedSpec;
+    SDL_OpenAudio(&desiredSpec, &obtainedSpec);
+    SDL_PauseAudio(0);
+    setFrequency(0);
+}
+
+Beeper::~Beeper()
+{
+    SDL_CloseAudio();
+}
+
+void Beeper::generateSamples(Sint16 *stream, int length)
+{
+    int i = 0;
+    while (i < length) {
+
+        if (freq == 0) {
+            while (i < length) {
+                stream[i] = 0;
+                i++;
+            }
+            return;
+       	}
+       	int samplesToDo = length;
+        while (i < samplesToDo) {
+            stream[i] = AMPLITUDE * ((((int)v*2/FREQUENCY) % 2) ? -1 : 1);
+            i++;
+            v += freq;
+        }
+    }
+}
+
+void Beeper::setFrequency(double f) {
+	freq = f;
+}
+
+void audio_callback(void *_beeper, Uint8 *_stream, int _length)
+{
+    Sint16 *stream = (Sint16*) _stream;
+    int length = _length / 2;
+    Beeper* beeper = (Beeper*) _beeper;
+    beeper->generateSamples(stream, length);
+}
+
+void GFXSetFrequency(int freq) {
+	beeper.setFrequency(freq);
 }

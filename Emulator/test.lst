@@ -1,4 +1,4 @@
- AS V1.42 Beta [Bld 102] - source file test.asm - page 1 - 7/1/2016 9:02:46
+ AS V1.42 Beta [Bld 102] - source file test.asm - page 1 - 7/1/2016 10:49:20
 
 
        1/       0 :                     
@@ -61,7 +61,7 @@
       58/      2B : 30 0F               	br 		Return
       59/      2D :                     
       60/      2D :                     Main:
- AS V1.42 Beta [Bld 102] - source file test.asm - page 2 - 7/1/2016 9:02:46
+ AS V1.42 Beta [Bld 102] - source file test.asm - page 2 - 7/1/2016 10:49:20
 
 
       61/      2D : E2                  	sex 	r2
@@ -124,7 +124,7 @@
                     42 10 
      101/      E0 : 00 00 73 FC 00 10   	db 000h,000h,073h,0FCh,000h,010h,07Bh,0D0h
                     7B D0 
- AS V1.42 Beta [Bld 102] - source file test.asm - page 3 - 7/1/2016 9:02:46
+ AS V1.42 Beta [Bld 102] - source file test.asm - page 3 - 7/1/2016 10:49:20
 
 
      102/      E8 : 00 00 30 00 3F F0   	db 000h,000h,030h,000h,03Fh,0F0h,000h,000h
@@ -135,7 +135,7 @@
                     00 00 
      105/     100 :                     
      106/     100 :                     
- AS V1.42 Beta [Bld 102] - source file test.asm - page 4 - 7/1/2016 9:02:46
+ AS V1.42 Beta [Bld 102] - source file test.asm - page 4 - 7/1/2016 10:49:20
 
 
   symbol table (* = unused):
@@ -159,14 +159,14 @@
  R3 :                             3 - |  R4 :                             4 - |
  R5 :                             5 - |  REFRESH :                       1E C |
 *RELAXED :                        0 - |  RETURN :                         F C |
- STACK :                         4E - | *TIME :                     9:02:46 - |
+ STACK :                         4E - | *TIME :                    10:49:20 - |
 *TRUE :                           1 - | *VERSION :                     142F - |
  WAIT :                          2F C |
 
      41 symbols
      28 unused symbols
 
- AS V1.42 Beta [Bld 102] - source file test.asm - page 5 - 7/1/2016 9:02:46
+ AS V1.42 Beta [Bld 102] - source file test.asm - page 5 - 7/1/2016 10:49:20
 
 
   codepages:
