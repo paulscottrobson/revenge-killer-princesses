@@ -1,0 +1,259 @@
+ AS V1.42 Beta [Bld 102] - source file test.asm - page 1 - 6/29/2016 23:15:35
+
+
+       1/       0 :                     
+       2/       0 :                     	cpu 	1802
+       3/       0 :                     
+       4/       0 :                     
+       5/       0 : =FH                 display = 00Fh																	; this page has the display in it
+       6/       0 : =EH                 map = 00Eh 																		; this page has the map in it.
+       7/       0 : =DH                 stack = 00Dh 																	; this page has the stack in it.
+       8/       0 :                     
+       9/       0 : =0H                 r0 = 0
+      10/       0 : =1H                 r1 = 1
+      11/       0 : =2H                 r2 = 2
+      12/       0 : =3H                 r3 = 3
+      13/       0 : =4H                 r4 = 4
+      14/       0 : =5H                 r5 = 5
+      15/       0 : =6H                 r6 = 6
+      16/       0 : =7H                 r7 = 7
+      17/       0 : =8H                 r8 = 8
+      18/       0 : =9H                 r9 = 9
+      19/       0 : =FH                 rf = 15
+      20/       0 :                     
+      21/       0 : 90                  	ghi 	r0
+      22/       1 : B1                  	phi		r1
+      23/       2 :                     
+      24/       2 : F8 0D               	ldi 	stack
+      25/       4 : B2                  	phi		r2
+      26/       5 : F8 FF               	ldi 	0FFh
+      27/       7 : A2                  	plo 	r2
+      28/       8 :                     
+      29/       8 : F8 01               	ldi 	Main / 256
+      30/       A : B3                  	phi 	r3
+      31/       B : F8 00               	ldi 	Main & 255
+      32/       D : A3                  	plo 	r3
+      33/       E :                     
+      34/       E : F8 00               	ldi 	Interrupt / 256
+      35/      10 : B1                  	phi 	r1
+      36/      11 : F8 19               	ldi 	Interrupt & 255
+      37/      13 : A1                  	plo 	r1
+      38/      14 :                     
+      39/      14 : E2                  	sex 	r2
+      40/      15 : 69                  	inp		1
+      41/      16 :                     
+      42/      16 : D3                  	sep 	r3
+      43/      17 :                     
+      44/      17 :                     Return:
+      45/      17 : 72                  	ldxa
+      46/      18 : 70                  	ret
+      47/      19 :                     Interrupt:
+      48/      19 : 22                  	dec 	r2
+      49/      1A : 78                  	sav
+      50/      1B : 22                  	dec 	r2
+      51/      1C : 52                  	str 	r2
+      52/      1D : C4                  	nop
+      53/      1E : C4                  	nop
+      54/      1F : C4                  	nop
+      55/      20 : F8 0F               	ldi 	display
+      56/      22 : B0                  	phi 	r0
+      57/      23 : F8 00               	ldi 	0
+      58/      25 : A0                  	plo 	r0
+      59/      26 :                     Refresh:
+      60/      26 : 80                  	glo 	r0
+ AS V1.42 Beta [Bld 102] - source file test.asm - page 2 - 6/29/2016 23:15:35
+
+
+      61/      27 : E2                  	sex 	r2
+      62/      28 :                     
+      63/      28 : E2                  	sex 	r2
+      64/      29 : 20                  	dec 	r0
+      65/      2A : A0                  	plo 	r0
+      66/      2B :                     
+      67/      2B : E2                  	sex 	r2
+      68/      2C : 20                  	dec 	r0
+      69/      2D : A0                  	plo 	r0
+      70/      2E :                     
+      71/      2E : E2                  	sex 	r2
+      72/      2F : 20                  	dec 	r0
+      73/      30 : A0                  	plo 	r0
+      74/      31 :                     
+      75/      31 : 3C 26               	bn1 	Refresh
+      76/      33 : 30 17               	br 		Return
+      77/      35 :                     
+      78/     100 :                     	org 	0100h
+      79/     100 :                     
+      80/     100 :                     Main:
+      81/     100 :                     
+      82/     100 :                     ; ************************************************************************************************************
+      83/     100 :                     ; ************************************************************************************************************
+      84/     100 :                     ;
+      85/     100 :                     ;												Repaint entire display
+      86/     100 :                     ;
+      87/     100 :                     ; ************************************************************************************************************
+      88/     100 :                     ; ************************************************************************************************************
+      89/     100 :                     
+      90/     100 :                     RepaintDisplay:
+      91/     100 : F8 0F               	ldi 	display 															; r4 points to display position.
+      92/     102 : B4                  	phi 	r4 																	; so does R5 as we're going to clear it
+      93/     103 : B5                  	phi 	r5 																	; the top half of the screen
+      94/     104 : F8 00               	ldi 	0
+      95/     106 : A4                  	plo 	r4
+      96/     107 : A5                  	plo 	r5
+      97/     108 :                     _RDClear:
+      98/     108 : 84                  	glo 	r4 																	; R4.0 is zero
+      99/     109 : 55                  	str 	r5 																	; fill display RAM with it.
+     100/     10A : 15                  	inc 	r5
+     101/     10B : 85                  	glo 	r5
+     102/     10C : 7E                  	shlc 																		; only do it half way as we copy
+     103/     10D : 3B 08               	bnf 	_RDClear 															; the bottom half.
+     104/     10F :                     
+     105/     10F :                     ; ************************************************************************************************************
+     106/     10F :                     ;									    Come back here to reset the masks
+     107/     10F :                     ; ************************************************************************************************************
+     108/     10F :                     
+     109/     10F :                     RepaintDisplayResetMasks:
+     110/     10F : F8 C0               	ldi 	0C0h 																; r7.0 is 11000000 (left write)
+     111/     111 : A7                  	plo 	r7
+     112/     112 : F8 03               	ldi 	3 																	; r7.1 is 00000011 (right write)
+     113/     114 : B7                  	phi 	r7
+     114/     115 :                     
+     115/     115 :                     ; ************************************************************************************************************
+     116/     115 :                     ;				Main repaint loop. R4 points to the line position. R7.0 left mask R7.1 right mask
+     117/     115 :                     ; ************************************************************************************************************
+     118/     115 :                     
+     119/     115 :                     RepaintDisplayLoop:
+     120/     115 : 94                  	ghi		r4 																	; copy R4.1 to R5.1 and R6.1
+ AS V1.42 Beta [Bld 102] - source file test.asm - page 3 - 6/29/2016 23:15:35
+
+
+     121/     116 : B5                  	phi 	r5 																	
+     122/     117 : B6                  	phi 	r6
+     123/     118 : 84                  	glo 	r4 																	; are there no solid blocks yet ?
+     124/     119 : FA 07               	ani 	7
+     125/     11B : 32 2E               	bz 		RepaintNoSolid
+     126/     11D : 84                  	glo 	r4 																	; R5.0 will point to left bit
+     127/     11E : A5                  	plo 	r5
+     128/     11F : FB 07               	xri 	7																	; R5.1 will point to right bit
+     129/     121 : A6                  	plo 	r6																	
+     130/     122 : 25                  	dec 	r5
+     131/     123 :                     
+     132/     123 :                     PaintSolidBlocks:
+     133/     123 : F8 FF               	ldi 	0FFh 																; write solid block on left.
+     134/     125 : 55                  	str 	r5
+     135/     126 : 56                  	str 	r6
+     136/     127 : 25                  	dec 	r5 																	; move left left and right right
+     137/     128 : 16                  	inc 	r6
+     138/     129 : 86                  	glo 	r6 																	; if right hasn't wrapped around
+     139/     12A : FA 07               	ani 	7
+     140/     12C : 3A 23               	bnz 	PaintSolidBlocks
+     141/     12E :                     RepaintNoSolid:
+     142/     12E :                     
+     143/     12E : 84                  	glo 	r4 																	; set R5 and R6 to point to write
+     144/     12F : A5                  	plo 	r5
+     145/     130 : FB 07               	xri 	7
+     146/     132 : A6                  	plo 	r6
+     147/     133 :                     
+     148/     133 : 84                  	glo 	r4 																	; point R4 to the next line.
+     149/     134 : FC 08               	adi 	8
+     150/     136 : A4                  	plo 	r4
+     151/     137 :                     
+     152/     137 : 87                  	glo 	r7																	; write left mask
+     153/     138 : 55                  	str 	r5
+     154/     139 : 76                  	shrc 																		; update the left mask.
+     155/     13A : 76                  	shrc	
+     156/     13B : F9 C0               	ori 	0C0h
+     157/     13D : A7                  	plo 	r7
+     158/     13E :                     
+     159/     13E : 97                  	ghi 	r7 																	; write right mask
+     160/     13F : 56                  	str 	r6
+     161/     140 : 7E                  	shlc 																		; update the right mask.
+     162/     141 : 7E                  	shlc 
+     163/     142 : F9 03               	ori 	3
+     164/     144 : B7                  	phi	 	r7
+     165/     145 :                     
+     166/     145 : 3B 15               	bnf 	RepaintDisplayLoop
+     167/     147 : 14                  	inc 	r4 																	; step out 1.
+     168/     148 : 84                  	glo 	r4 																	; if not half way down loop back.
+     169/     149 : 7E                  	shlc
+     170/     14A : 3B 0F               	bnf 	RepaintDisplayResetMasks
+     171/     14C :                     
+     172/     14C :                     ; ************************************************************************************************************
+     173/     14C :                     ;									Now copy top half to bottom half upside down
+     174/     14C :                     ; ************************************************************************************************************
+     175/     14C :                     	
+     176/     14C : F8 0F               	ldi 	Display 															; R4 points to screen top
+     177/     14E : B4                  	phi 	r4 
+     178/     14F : F8 00               	ldi 	0  															
+     179/     151 : A4                  	plo 	r4 
+     180/     152 :                     MirrorLoop:
+ AS V1.42 Beta [Bld 102] - source file test.asm - page 4 - 6/29/2016 23:15:35
+
+
+     181/     152 : 84                  	glo 	r4 																	; set up bottom pointer r5
+     182/     153 : FB F8               	xri 	0F8h
+     183/     155 : A5                  	plo 	r5	
+     184/     156 : 94                  	ghi	 	r4
+     185/     157 : B5                  	phi 	r5
+     186/     158 : 44                  	lda 	r4 																	; copy data bumping R4
+     187/     159 : 55                  	str 	r5
+     188/     15A : 15                  	inc 	r5
+     189/     15B : 84                  	glo 	r4
+     190/     15C : 7E                  	shlc 	
+     191/     15D : 3B 52               	bnf 	MirrorLoop
+     192/     15F :                     
+     193/     15F :                     wait:
+     194/     15F : 30 5F               	br 		wait
+     195/     161 :                     	
+ AS V1.42 Beta [Bld 102] - source file test.asm - page 5 - 6/29/2016 23:15:35
+
+
+  symbol table (* = unused):
+  ------------------------
+
+*ARCHITECTURE :  i386-unknown-win32 - | *BIGENDIAN :                      0 - |
+*BRANCHEXT :                      0 - | *CASESENSITIVE :                  0 - |
+*CONSTPI :        3.141592653589793 - | *DATE :                   6/29/2016 - |
+ DISPLAY :                        F - | *FALSE :                          0 - |
+*FULLPMMU :                       1 - | *HAS64 :                          1 - |
+*HASDSP :                         0 - | *HASFPU :                         0 - |
+*HASPMMU :                        0 - | *INEXTMODE :                      0 - |
+*INLWORDMODE :                    0 - | *INMAXMODE :                      0 - |
+*INSRCMODE :                      0 - | *INSUPMODE :                      0 - |
+ INTERRUPT :                     19 C | *LISTON :                         1 - |
+*MACEXP :                         1 - |  MAIN :                         100 C |
+*MAP :                            E - |  MIRRORLOOP :                   152 C |
+*MOMCPU :                      1802 - | *MOMCPUNAME :                  1802 - |
+*NESTMAX :                      100 - | *PACKING :                        0 - |
+*PADDING :                        1 - |  PAINTSOLIDBLOCKS :             123 C |
+ R0 :                             0 - |  R1 :                             1 - |
+ R2 :                             2 - |  R3 :                             3 - |
+ R4 :                             4 - |  R5 :                             5 - |
+ R6 :                             6 - |  R7 :                             7 - |
+*R8 :                             8 - | *R9 :                             9 - |
+ REFRESH :                       26 C | *RELAXED :                        0 - |
+*REPAINTDISPLAY :               100 C |  REPAINTDISPLAYLOOP :           115 C |
+ REPAINTDISPLAYRESETMASKS :     10F C |  REPAINTNOSOLID :               12E C |
+ RETURN :                        17 C | *RF :                             F - |
+ STACK :                          D - | *TIME :                    23:15:35 - |
+*TRUE :                           1 - | *VERSION :                     142F - |
+ WAIT :                         15F C |  _RDCLEAR :                     108 C |
+
+     54 symbols
+     33 unused symbols
+
+ AS V1.42 Beta [Bld 102] - source file test.asm - page 6 - 6/29/2016 23:15:35
+
+
+  codepages:
+  ----------
+
+STANDARD (0 changed characters)
+
+
+0.00 seconds assembly time
+
+    195 lines source file
+      2 passes
+      0 errors
+      0 warnings
