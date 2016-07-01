@@ -44,8 +44,8 @@ __RPFindPrincess:
 	ldi 	map/256
 	phi 	rd 																	
 	ldn 	rd 																	; read what's there.
-	shr 																		; shift bit 0 right into DF.
-	bdf 	__RPFoundPrincess 													; if true, then found princess
+	ani 	7Fh 																; drop bit 7
+	bnz 	__RPFoundPrincess 													; if true, then found princess
 	ldn 	rd 																	; reload and look at bit 7
 	shl
 	bdf 	__RPStatus 															; if found a wall don't look further

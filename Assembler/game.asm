@@ -44,6 +44,10 @@ Main:
 	call 	r4,CreateMaze 														; create the maze
 	call 	r4,ResetPlayer 														; reset the player
 
+	lri 	r4, map+075h
+	ldi 	1
+	str 	r4
+
 Loop:
 	call 	r4,Repaint
 	lri 	r4,Direction
@@ -83,7 +87,7 @@ SpriteData:
 	include graphics.inc 														
 
 ;	TODO: 	
+; 			Player Movement
+; 			Add closeness sound effect / heartbeat
+;			Princess movement (for arbitrary placed princess)
 ;			Put princesses in the maze.
-;			Add movement around
-; 			Add closeness sound effect
-; 			Add heartbeat and adjustment
