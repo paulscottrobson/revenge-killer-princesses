@@ -1,11 +1,9 @@
-
-
 ; ************************************************************************************************************
 ; ************************************************************************************************************
 ;
 ;												Maze Creator
 ;
-;	Uses R5,RC,RD,RF.
+;	Uses RB,RC,RD,RF.
 ; ************************************************************************************************************
 ; ************************************************************************************************************
 
@@ -23,7 +21,7 @@ __CMFill:
 	glo 	rc
 	bnz 	__CMFill
 	lri 	rc,map+16+1 														; row 1 column 1
-	lri 	r5,RandomNumber 													; r5 = random subroutine (runs in R4)
+	lri 	rb,RandomNumber 													; r5 = random subroutine (runs in R4)
 __CMGenerate:
 	glo 	rc 																	; do not overright right hand wall
 	ani 	0Fh 
@@ -37,7 +35,7 @@ __CMGenerate:
 	ldi 	MAZE_Open
 	str 	rc 																	; write 00 (maze open) here.
 
-	recall 	r5																	; random number
+	recall 	rb																	; random number
 	ani 	15
 	smi 	11 																	; check mod 16 < 11
 	bdf 	__CMNotRight
@@ -47,7 +45,7 @@ __CMGenerate:
 	dec 	rc
 __CMNotRight:
 
-	recall 	r5 																	; random number
+	recall 	rb 																	; random number
 	ani 	15
 	smi 	11 			 														; check mod 16 < 11
 	bdf 	__CMNotDown

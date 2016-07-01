@@ -60,52 +60,52 @@ PlayerDirectionTable:
 ;		Draw player view at depth D (0 = outermost, 3 = innermost). Returns DF = 0 if can move forward.
 ;		D returned unchanged. Store new position at (RC) and increment RC.
 ;		  
-;	Uses GetPlayerNextOffset (RE/RF) and DoorOpen(RE/RF). Runs in R4.
+;	Uses RA,RB,RD GetPlayerNextOffset (RE/RF) and DoorOpen(RE/RF). 
 ; ************************************************************************************************************
 ; ************************************************************************************************************
 
 DrawPlayerViewAtDepth:
-	plo 	r6 																	; save the depth in R6.
+	phi 	ra 																	; save the depth in ra.1
 
-	lri 	r5,GetPlayerNextOffset												; call to identify left/right
+	lri 	rd,GetPlayerNextOffset												; call to identify left/right
 	ldi 	-1 																	; can we look left ?
-	recall 	r5    
-	ldn 	rf 																	; get what's there into R7.0
-	plo 	r7
+	recall 	rd    
+	ldn 	rf 																	; get what's there into rb.0
+	plo 	rb
 	ldi 	1 																	; can we look right ?
-	recall 	r5
-	ldn 	rf 																	; get what's there into R7.1
-	phi 	r7
+	recall 	rd
+	ldn 	rf 																	; get what's there into rb.1
+	phi 	rb
 	ldi 	0 																	; look ahead
-	recall 	r5
+	recall 	rd
 	str 	rc 																	; save position at (RC)
-	ldn 	rf 																	; get what's there into R8.0
-	plo 	r8 	
+	ldn 	rf 																	; get what's there into ra.0
+	plo 	ra 	
 
-	lri 	rf,Player 															; update the player position from R8.1
+	lri 	rf,Player 															; update the player position from ra.1
 	ldn 	rc 																	; read read position and update it
 	str 	rf
 	inc 	rc 																	; increment position vector pointer.
 
-	lri 	r5,DoorOpen 														; prepare to show open door.
-	glo 	r7 																	; wall on left side ?
+	lri 	rd,DoorOpen 														; prepare to show open door.
+	glo 	rb 																	; wall on left side ?
 	shl
 	bdf 	__DPVNoLeftWall
-	glo 	r6 																	; open depth up
-	recall 	r5 
+	ghi 	ra 																	; open depth up
+	recall 	rd 
 __DPVNoLeftWall:
-	ghi 	r7 																	; wall on right side ?
+	ghi 	rb 																	; wall on right side ?
 	shl
 	bdf 	__DPVNoRightWall
-	glo 	r6 																	; open 7-depth up.
+	ghi 	ra 																	; open 7-depth up.
 	xri 	7
-	recall 	r5
+	recall 	rd
 __DPVNoRightWall:
-	glo 	r8 																	; get what's in front.
+	glo 	ra 																	; get what's in front.
 	shl 
 	bnf 	__DPVExit 															; if clear exit with DF = 0
 
-	glo 	r6 																	; calculate start position
+	ghi 	ra 																	; calculate start position
 	adi 	1 																	; move in one
 	sex 	r2 																	; depth * 8 + depth
 	str 	r2
@@ -116,24 +116,24 @@ __DPVNoRightWall:
 	shl
 	add 	 																	; *9
 	plo 	rf 																	; set RF to point to first block. 
-	ldi 	Display/256
+	ldi 	Buffer/256
 	phi 	rf
 	ldi 	0FFh 																; set writing value to $AA
 	plo 	re
 __DPVDrawWall:
-	glo 	r6 																	; 0123 for depths
+	ghi 	ra 																	; 0123 for depths
 	xri 	3 																	; 3210 for depths
 	shl 																		; 6420 for depths
 	bz 		__DPVExitWall 														; if nothing to draw skip.
-	plo 	r7
+	plo 	rb
 	glo 	rf 																	; save the start position of row.
 	phi 	re	
 __DPVDrawLine:
 	glo 	re 																	; copy one wall piece over.
 	str 	rf
 	inc 	rf	
-	dec 	r7 																	; do required number of times
-	glo 	r7
+	dec 	rb 																	; do required number of times
+	glo 	rb
 	bnz 	__DPVDrawLine
 	plo 	re 																	; draw spaces from here on.
 	ghi 	re 																	; get start of line RE.1
@@ -145,7 +145,7 @@ __DPVExitWall:
 	ldi 	0FFh 																; set DF.
 	shl
 __DPVExit:
-	glo 	r6 																	; restore D.
+	ghi 	ra 																	; restore D.
 	return
 	br 		DrawPlayerViewAtDepth
 

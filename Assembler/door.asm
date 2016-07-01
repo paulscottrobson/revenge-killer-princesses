@@ -16,7 +16,7 @@ DoorOpen:
 __DOLeftMask:																	; 0 for left $81 for right	
 	xri 	080h 																; now $80 for left $01 for right
 	phi 	re 																	; save in re.H
-	ldi 	Display/256  														; finish setting up rf
+	ldi 	Buffer/256  														; finish setting up rf
 	phi 	rf 
 	sex 	rf
 __DOMask:

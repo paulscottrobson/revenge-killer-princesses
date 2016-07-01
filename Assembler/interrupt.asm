@@ -14,7 +14,7 @@ Interrupt:
 	sav 																		; [2/4]
 	dec 	r2 																	; [2/6] save D on stack
 	str 	r2																	; [2/8]
-	ldi 	display/256 														; [2/10] set up R0.1
+	ldi 	screen/256 															; [2/10] set up R0.1
 	phi 	r0 																	; [2/12]
 	ldi 	0 																	; [2/14] set up R0.0
 	plo 	r0

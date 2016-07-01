@@ -44,7 +44,7 @@ class Graphic:
 				bit = 0x80 >> x if not reverse else 0x01 << x
 				if t == '.':
 					mask = mask | bit 
-				if t == 'X':
+				if t == ' ':
 					pic = pic | bit
 			assert mask != 0xFF
 			data.put(mask)
@@ -57,15 +57,15 @@ for i in range(1,5):
 	g = Graphic("princess{0}.png".format(i))
 	g.show()
 	data.define()
-	g.render(data,4,15-g.height/2,False)
+	g.render(data,3,20-i-g.height/2,False)
 	data.define()
-	g.render(data,5,15-g.height/2,True)
+	g.render(data,4,20-i-g.height/2,True)
 for i in range(1,5):
 	g = Graphic("heart{0}.png".format(i))
 	g.show()
 	data.define()
-	g.render(data,4,26-g.height/2,False)
+	g.render(data,6,1,False)
 	data.define()
-	g.render(data,5,26-g.height/2,True)
+	g.render(data,7,1,True)
 
 print("; {0}".format(data.size))
