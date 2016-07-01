@@ -51,9 +51,6 @@ GetPlayerNextOffset:
 	return
 	br 		GetPlayerNextOffset 												; re-entrant into next offset.
 
-PlayerDirectionTable:
-	db 		1,16,-1,-16 														; direction -> offset table.
-
 ; ************************************************************************************************************
 ; ************************************************************************************************************
 ;
@@ -149,3 +146,5 @@ __DPVExit:
 	return
 	br 		DrawPlayerViewAtDepth
 
+PlayerDirectionTable:
+	db 		1,16,-1,-16 														; direction -> offset table.

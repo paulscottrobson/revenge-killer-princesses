@@ -80,7 +80,8 @@ code:
 ;	Block 2
 ;
 	org	 	code+200h
-	include repaint.asm 														; repaint main, sprite drawing.
+	include repaint.asm 														; repaint ($8B)
+	include sprites.asm 														; sprite drawing ($30)
 
 	org  	stack-240h 															; put gfx data at the end.	
 SpriteData:	
