@@ -57,9 +57,9 @@ for i in range(1,5):
 	g = Graphic("princess{0}.png".format(i))
 	g.show()
 	data.define()
-	g.render(data,3,20-i-g.height/2,False)
+	g.render(data,3,23-i*2-g.height/2,False)
 	data.define()
-	g.render(data,4,20-i-g.height/2,True)
+	g.render(data,4,23-i*2-g.height/2,True)
 for i in range(1,5):
 	g = Graphic("heart{0}.png".format(i))
 	g.show()

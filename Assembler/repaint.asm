@@ -37,14 +37,32 @@ __RepaintExit:
 
 	call 	r5,MirrorDisplay 													; mirror top of display to bottom
 
-	lri 	r5,DrawSpriteGraphic 
-	ldi 	0
-	recall 	r5
-	recall 	r5
-	ldi 	8
-	recall 	r5
-	recall 	r5
-	
+	lri 	rc,ppVector 														; point RC to the positional vector.
+__RPFindPrincess:
+	lda 	rc 																	; get the position to check
+	plo 	rd 																	; make RD point to the map entry.
+	ldi 	map/256
+	phi 	rd 																	
+	ldn 	rd 																	; read what's there.
+	shr 																		; shift bit 0 right into DF.
+	bdf 	__RPFoundPrincess 													; if true, then found princess
+	ldn 	rd 																	; reload and look at bit 7
+	shl
+	bdf 	__RPStatus 															; if found a wall don't look further
+	glo 	rc 
+	xri 	(ppVector+4) & 255
+	bnz 	__RPFindPrincess 													; not done 4, try next square.
+	br 		__RPStatus
+
+__RPFoundPrincess:
+	lri 	rd,DrawSpriteGraphic 												; RD to sprite drawer.
+	glo 	rc 																	; calculate offset in vector
+	smi 	(ppVector & 255)+1
+	shl 																		; x 2, 2 sprites per princess
+	recall 	rd
+	recall 	rd
+
+__RPStatus:
 	; draw status.
 
 	ldi 	Screen/256 															; not double buffered ?

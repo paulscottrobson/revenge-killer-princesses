@@ -44,7 +44,6 @@ Main:
 	call 	r4,CreateMaze 														; create the maze
 	call 	r4,ResetPlayer 														; reset the player
 
-
 Loop:
 	call 	r4,Repaint
 	lri 	r4,Direction
@@ -52,13 +51,7 @@ Loop:
 	adi 	1
 	ani 	3
 	str 	r4
-
-
-	lri 	r4,30000
-delay:
-	dec 	r4
-	ghi 	r4
-	bnz 	delay	
+	inc 	r8
 	br 		Loop
 
 wait:
@@ -90,10 +83,7 @@ SpriteData:
 	include graphics.inc 														
 
 ;	TODO: 	
-;			Sprite drawing 
 ;			Put princesses in the maze.
-;			Add visual on princesses
 ;			Add movement around
 ; 			Add closeness sound effect
 ; 			Add heartbeat and adjustment
-; 			Consider a back-buffer ?

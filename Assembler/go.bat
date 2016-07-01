@@ -1,3 +1,4 @@
+@echo off
 cd ..\miscellany\graphics
 call build.bat
 cd ..\..\assembler

@@ -1,4 +1,4 @@
- AS V1.42 Beta [Bld 102] - source file game.asm - page 1 - 7/1/2016 17:20:22
+ AS V1.42 Beta [Bld 102] - source file game.asm - page 1 - 7/1/2016 18:14:24
 
 
        1/       0 :                     ; ************************************************************************************************************
@@ -61,7 +61,7 @@
 (1)   44/       0 :                     	endm
 (1)   45/       0 :                     
 (1)   46/       0 :                     return Macro 																	; return from routine
- AS V1.42 Beta [Bld 102] - source file game.asm(1802.inc) - page 2 - 7/1/2016 17:20:22
+ AS V1.42 Beta [Bld 102] - source file game.asm(1802.inc) - page 2 - 7/1/2016 18:14:24
 
 
 (1)   47/       0 :                     	sex 	r2
@@ -124,57 +124,46 @@
       45/      20 : F8 3E                       ldi     (RESETPLAYER)&255
       45/      22 : A4                          plo     R4
       45/      23 :  (MACRO-2)                  recall  R4
- AS V1.42 Beta [Bld 102] - source file game.asm - page 3 - 7/1/2016 17:20:22
+ AS V1.42 Beta [Bld 102] - source file game.asm - page 3 - 7/1/2016 18:14:24
 
 
       45/      23 : 79                          mark
       45/      24 : D4                          sep     R4
       45/      25 : 22                          dec     r2
       46/      26 :                     
-      47/      26 :                     
-      48/      26 :                     Loop:
-      49/      26 : (MACRO)             	call 	r4,Repaint
-      49/      26 :  (MACRO-2)                  lri     R4,REPAINT
-      49/      26 : F8 03                       ldi     (REPAINT)/256
-      49/      28 : B4                          phi     R4
-      49/      29 : F8 00                       ldi     (REPAINT)&255
-      49/      2B : A4                          plo     R4
-      49/      2C :  (MACRO-2)                  recall  R4
-      49/      2C : 79                          mark
-      49/      2D : D4                          sep     R4
-      49/      2E : 22                          dec     r2
-      50/      2F : (MACRO)             	lri 	r4,Direction
-      50/      2F : F8 0C                       ldi     (DIRECTION)/256
-      50/      31 : B4                          phi     R4
-      50/      32 : F8 F7                       ldi     (DIRECTION)&255
-      50/      34 : A4                          plo     R4
-      51/      35 : 04                  	ldn 	r4
-      52/      36 : FC 01               	adi 	1
-      53/      38 : FA 03               	ani 	3
-      54/      3A : 54                  	str 	r4
-      55/      3B :                     
-      56/      3B :                     
-      57/      3B : (MACRO)             	lri 	r4,30000
-      57/      3B : F8 75                       ldi     (30000)/256
-      57/      3D : B4                          phi     R4
-      57/      3E : F8 30                       ldi     (30000)&255
-      57/      40 : A4                          plo     R4
-      58/      41 :                     delay:
-      59/      41 : 24                  	dec 	r4
-      60/      42 : 94                  	ghi 	r4
-      61/      43 : 3A 41               	bnz 	delay	
-      62/      45 : 30 26               	br 		Loop
-      63/      47 :                     
-      64/      47 :                     wait:
-      65/      47 : 30 47               	br 		wait
-      66/      49 :                     
-      67/     100 :                     	org 	100h
-      68/     100 :                     
-      69/     100 :                     code:
-      70/     100 :                     ;
-      71/     100 :                     ;	Block 0
-      72/     100 :                     ;
-      73/     100 :                     	include interrupt.asm														; screen driver ($1E)
+      47/      26 :                     Loop:
+      48/      26 : (MACRO)             	call 	r4,Repaint
+      48/      26 :  (MACRO-2)                  lri     R4,REPAINT
+      48/      26 : F8 03                       ldi     (REPAINT)/256
+      48/      28 : B4                          phi     R4
+      48/      29 : F8 00                       ldi     (REPAINT)&255
+      48/      2B : A4                          plo     R4
+      48/      2C :  (MACRO-2)                  recall  R4
+      48/      2C : 79                          mark
+      48/      2D : D4                          sep     R4
+      48/      2E : 22                          dec     r2
+      49/      2F : (MACRO)             	lri 	r4,Direction
+      49/      2F : F8 0C                       ldi     (DIRECTION)/256
+      49/      31 : B4                          phi     R4
+      49/      32 : F8 F7                       ldi     (DIRECTION)&255
+      49/      34 : A4                          plo     R4
+      50/      35 : 04                  	ldn 	r4
+      51/      36 : FC 01               	adi 	1
+      52/      38 : FA 03               	ani 	3
+      53/      3A : 54                  	str 	r4
+      54/      3B : 18                  	inc 	r8
+      55/      3C : 30 26               	br 		Loop
+      56/      3E :                     
+      57/      3E :                     wait:
+      58/      3E : 30 3E               	br 		wait
+      59/      40 :                     
+      60/     100 :                     	org 	100h
+      61/     100 :                     
+      62/     100 :                     code:
+      63/     100 :                     ;
+      64/     100 :                     ;	Block 0
+      65/     100 :                     ;
+      66/     100 :                     	include interrupt.asm														; screen driver ($1E)
 (1)    1/     100 :                     ; ************************************************************************************************************
 (1)    2/     100 :                     ; ************************************************************************************************************
 (1)    3/     100 :                     ;
@@ -187,9 +176,6 @@
 (1)   10/     100 : 72                  	ldxa 																		; restore D
 (1)   11/     101 : 70                  	ret 																		; restore X,P
 (1)   12/     102 :                     Interrupt:
- AS V1.42 Beta [Bld 102] - source file game.asm(interrupt.asm) - page 4 - 7/1/2016 17:20:22
-
-
 (1)   13/     102 : 22                  	dec 	r2 																	; [2/2] save return XP on stack 
 (1)   14/     103 : 78                  	sav 																		; [2/4]
 (1)   15/     104 : 22                  	dec 	r2 																	; [2/6] save D on stack
@@ -201,6 +187,9 @@
 (1)   21/     10C : C4                  	nop 																		; pad out cycles till rendering
 (1)   22/     10D : C4                  	nop
 (1)   23/     10E : C4                  	nop
+ AS V1.42 Beta [Bld 102] - source file game.asm(interrupt.asm) - page 4 - 7/1/2016 18:14:24
+
+
 (1)   24/     10F :                     Refresh:
 (1)   25/     10F : 80                  	glo 	r0 																	; do four scan lines for each row
 (1)   26/     110 : E2                  	sex 	r2
@@ -220,7 +209,7 @@
 (1)   40/     11A : 3C 0F               	bn1 	Refresh 															; in emulator we never loop back
 (1)   41/     11C : 30 00               	br 		Return
 (1)   42/     11E :                     
-      74/     11E :                     	include maze.asm 															; maze creator & RNG ($7B)
+      67/     11E :                     	include maze.asm 															; maze creator & RNG ($7B)
 (1)    1/     11E :                     ; ************************************************************************************************************
 (1)    2/     11E :                     ; ************************************************************************************************************
 (1)    3/     11E :                     ;
@@ -250,9 +239,6 @@
 (1)   23/     12C : (MACRO)             	lri 	rc,map+16+1 														; row 1 column 1
 (1)   23/     12C : F8 0D                       ldi     (MAP+16+1)/256
 (1)   23/     12E : BC                          phi     RC
- AS V1.42 Beta [Bld 102] - source file game.asm(maze.asm) - page 5 - 7/1/2016 17:20:22
-
-
 (1)   23/     12F : F8 11                       ldi     (MAP+16+1)&255
 (1)   23/     131 : AC                          plo     RC
 (1)   24/     132 : (MACRO)             	lri 	rb,RandomNumber 													; r5 = random subroutine (runs in R4)
@@ -264,6 +250,9 @@
 (1)   26/     138 : 8C                  	glo 	rc 																	; do not overright right hand wall
 (1)   27/     139 : FA 0F               	ani 	0Fh 
 (1)   28/     13B : FB 0F               	xri 	0Fh
+ AS V1.42 Beta [Bld 102] - source file game.asm(maze.asm) - page 5 - 7/1/2016 18:14:24
+
+
 (1)   29/     13D : 32 69               	bz 		__CMNext
 (1)   30/     13F :                     
 (1)   31/     13F : 8C                  	glo 	rc  																; makes the checkerboard pattern.
@@ -313,9 +302,6 @@
 (1)   66/     171 : 70                          ret
 (1)   67/     172 :                     
 (1)   68/     172 :                     ; ************************************************************************************************************
- AS V1.42 Beta [Bld 102] - source file game.asm(maze.asm) - page 6 - 7/1/2016 17:20:22
-
-
 (1)   69/     172 :                     ; ************************************************************************************************************
 (1)   70/     172 :                     ;
 (1)   71/     172 :                     ;							Random Number Generator - same as class LFSR in gen.py
@@ -327,6 +313,9 @@
 (1)   77/     172 :                     RandomNumber:
 (1)   78/     172 : (MACRO)             	lri 	rf,__RNHighM1+1
 (1)   78/     172 : F8 01                       ldi     (__RNHIGHM1+1)/256
+ AS V1.42 Beta [Bld 102] - source file game.asm(maze.asm) - page 6 - 7/1/2016 18:14:24
+
+
 (1)   78/     174 : BF                          phi     RF
 (1)   78/     175 : F8 79                       ldi     (__RNHIGHM1+1)&255
 (1)   78/     177 : AF                          plo     RF
@@ -360,7 +349,7 @@
 (1)  103/     195 : 70                          ret
 (1)  104/     196 : 30 72               	br 		RandomNumber 														; is re-entrant.
 (1)  105/     198 :                     
-      75/     198 :                     	include drawing.asm 														; repaint outline/mirror ($64)
+      68/     198 :                     	include drawing.asm 														; repaint outline/mirror ($64)
 (1)    1/     198 :                     ; ************************************************************************************************************
 (1)    2/     198 :                     ; ************************************************************************************************************
 (1)    3/     198 :                     ;
@@ -376,9 +365,6 @@
 (1)   13/     19B : BD                  	phi 	rd 																	; the top half of the screen
 (1)   14/     19C : F8 00               	ldi 	0
 (1)   15/     19E : AC                  	plo 	rc
- AS V1.42 Beta [Bld 102] - source file game.asm(drawing.asm) - page 7 - 7/1/2016 17:20:22
-
-
 (1)   16/     19F : AD                  	plo 	rd
 (1)   17/     1A0 :                     _RDClear:
 (1)   18/     1A0 : 8C                  	glo 	rc 																	; rc.0 is zero
@@ -390,6 +376,9 @@
 (1)   24/     1A7 :                     
 (1)   25/     1A7 :                     ; ************************************************************************************************************
 (1)   26/     1A7 :                     ;									    Come back here to reset the masks
+ AS V1.42 Beta [Bld 102] - source file game.asm(drawing.asm) - page 7 - 7/1/2016 18:14:24
+
+
 (1)   27/     1A7 :                     ; ************************************************************************************************************
 (1)   28/     1A7 :                     
 (1)   29/     1A7 :                     _RDResetMasks:
@@ -439,9 +428,6 @@
 (1)   73/     1C7 : AD                  	plo 	rd
 (1)   74/     1C8 : FB 07               	xri 	7
 (1)   75/     1CA : AE                  	plo 	re
- AS V1.42 Beta [Bld 102] - source file game.asm(drawing.asm) - page 8 - 7/1/2016 17:20:22
-
-
 (1)   76/     1CB :                     
 (1)   77/     1CB : 8C                  	glo 	rc 																	; point rc to the next line.
 (1)   78/     1CC : FC 08               	adi 	8
@@ -453,6 +439,9 @@
 (1)   84/     1D2 : F6                  	shr	
 (1)   85/     1D3 : F9 C0               	ori 	0C0h
 (1)   86/     1D5 : AF                  	plo 	rf
+ AS V1.42 Beta [Bld 102] - source file game.asm(drawing.asm) - page 8 - 7/1/2016 18:14:24
+
+
 (1)   87/     1D6 :                     
 (1)   88/     1D6 : 9F                  	ghi 	rf 																	; write right mask
 (1)   89/     1D7 : 5E                  	str 	re
@@ -502,20 +491,20 @@
 (1)  125/     1FA : E2                          sex     r2
 (1)  125/     1FB : 12                          inc     r2
 (1)  125/     1FC : 70                          ret
- AS V1.42 Beta [Bld 102] - source file game.asm(drawing.asm) - page 9 - 7/1/2016 17:20:22
-
-
 (1)  126/     1FD :                     
 (1)  127/     1FD :                     
 (1)  128/     1FD :                     		
-      76/     1FD :                     ;
-      77/     1FD :                     ;	Block 1
-      78/     1FD :                     ;
-      79/     200 :                     	org 	code+100h
-      80/     200 :                     	include door.asm 															; door "opening" code. ($3C)
+      69/     1FD :                     ;
+      70/     1FD :                     ;	Block 1
+      71/     1FD :                     ;
+      72/     200 :                     	org 	code+100h
+      73/     200 :                     	include door.asm 															; door "opening" code. ($3C)
 (1)    1/     200 :                     ; ************************************************************************************************************
 (1)    2/     200 :                     ; ************************************************************************************************************
 (1)    3/     200 :                     ;
+ AS V1.42 Beta [Bld 102] - source file game.asm(door.asm) - page 9 - 7/1/2016 18:14:24
+
+
 (1)    4/     200 :                     ;												Door opening
 (1)    5/     200 :                     ;
 (1)    6/     200 :                     ;	Uses RE,RF
@@ -565,9 +554,6 @@
 (1)   50/     22F : FE                  	shl
 (1)   51/     230 : 52                  	str 	r2 																	; save at R(X)
 (1)   52/     231 :                     
- AS V1.42 Beta [Bld 102] - source file game.asm(door.asm) - page 10 - 7/1/2016 17:20:22
-
-
 (1)   53/     231 : 8E                  	glo 	re 																	; get door position
 (1)   54/     232 : FC 78               	adi 	15*8 																; put half way down
 (1)   55/     234 : F7                  	sm 																			; subtract offset
@@ -579,8 +565,11 @@
 (1)   60/     239 : E2                          sex     r2
 (1)   60/     23A : 12                          inc     r2
 (1)   60/     23B : 70                          ret
+ AS V1.42 Beta [Bld 102] - source file game.asm(door.asm) - page 10 - 7/1/2016 18:14:24
+
+
 (1)   61/     23C : 30 00               	br 		DoorOpen
-      81/     23E :                     	include player.asm 															; player reset/depth view ($B0)
+      74/     23E :                     	include player.asm 															; player reset/depth view ($B0)
 (1)    1/     23E :                     ; ************************************************************************************************************
 (1)    2/     23E :                     ; ************************************************************************************************************
 (1)    3/     23E :                     ;
@@ -628,9 +617,6 @@
 (1)   35/     255 : F8 F7                       ldi     (DIRECTION)&255
 (1)   35/     257 : AF                          plo     RF
 (1)   36/     258 : 0F                  	ldn 	rf
- AS V1.42 Beta [Bld 102] - source file game.asm(player.asm) - page 11 - 7/1/2016 17:20:22
-
-
 (1)   37/     259 : F4                  	add 	 																	; get into D + offset
 (1)   38/     25A : FA 03               	ani 	3 																	; force into a position.
 (1)   39/     25C : FC 75               	adi 	PlayerDirectionTable & 255 											; get an address in the table
@@ -642,6 +628,9 @@
 (1)   43/     264 : BF                          phi     RF
 (1)   43/     265 : F8 F8                       ldi     (PLAYER)&255
 (1)   43/     267 : AF                          plo     RF
+ AS V1.42 Beta [Bld 102] - source file game.asm(player.asm) - page 11 - 7/1/2016 18:14:24
+
+
 (1)   44/     268 : EE                  	sex 	re 																	; R(X) points to the direction table
 (1)   45/     269 : 0F                  	ldn 	rf 																	; read position
 (1)   46/     26A : F4                  	add 																		; add direction and exit.
@@ -691,9 +680,6 @@
 (1)   77/     28C : 0F                  	ldn 	rf 																	; get what's there into rb.1
 (1)   78/     28D : BB                  	phi 	rb
 (1)   79/     28E : F8 00               	ldi 	0 																	; look ahead
- AS V1.42 Beta [Bld 102] - source file game.asm(player.asm) - page 12 - 7/1/2016 17:20:22
-
-
 (1)   80/     290 : (MACRO)             	recall 	rd
 (1)   80/     290 : 79                          mark
 (1)   80/     291 : DD                          sep     RD
@@ -705,6 +691,9 @@
 (1)   85/     296 : (MACRO)             	lri 	rf,Player 															; update the player position from ra.1
 (1)   85/     296 : F8 0C                       ldi     (PLAYER)/256
 (1)   85/     298 : BF                          phi     RF
+ AS V1.42 Beta [Bld 102] - source file game.asm(player.asm) - page 12 - 7/1/2016 18:14:24
+
+
 (1)   85/     299 : F8 F8                       ldi     (PLAYER)&255
 (1)   85/     29B : AF                          plo     RF
 (1)   86/     29C : 0C                  	ldn 	rc 																	; read read position and update it
@@ -754,9 +743,6 @@
 (1)  120/     2C9 : BF                  	phi 	rf
 (1)  121/     2CA : F8 FF               	ldi 	0FFh 																; set writing value to $AA
 (1)  122/     2CC : AE                  	plo 	re
- AS V1.42 Beta [Bld 102] - source file game.asm(player.asm) - page 13 - 7/1/2016 17:20:22
-
-
 (1)  123/     2CD :                     __DPVDrawWall:
 (1)  124/     2CD : 9A                  	ghi 	ra 																	; 0123 for depths
 (1)  125/     2CE : FB 03               	xri 	3 																	; 3210 for depths
@@ -768,6 +754,9 @@
 (1)  131/     2D6 :                     __DPVDrawLine:
 (1)  132/     2D6 : 8E                  	glo 	re 																	; copy one wall piece over.
 (1)  133/     2D7 : 5F                  	str 	rf
+ AS V1.42 Beta [Bld 102] - source file game.asm(player.asm) - page 13 - 7/1/2016 18:14:24
+
+
 (1)  134/     2D8 : 1F                  	inc 	rf	
 (1)  135/     2D9 : 2B                  	dec 	rb 																	; do required number of times
 (1)  136/     2DA : 8B                  	glo 	rb
@@ -790,11 +779,11 @@
 (1)  150/     2EC : 30 79               	br 		DrawPlayerViewAtDepth
 (1)  151/     2EE :                     
 (1)  152/     2EE :                     
-      82/     2EE :                     ;
-      83/     2EE :                     ;	Block 2
-      84/     2EE :                     ;
-      85/     300 :                     	org	 	code+200h
-      86/     300 :                     	include repaint.asm 														; repaint main, sprite drawing.
+      75/     2EE :                     ;
+      76/     2EE :                     ;	Block 2
+      77/     2EE :                     ;
+      78/     300 :                     	org	 	code+200h
+      79/     300 :                     	include repaint.asm 														; repaint main, sprite drawing.
 (1)    1/     300 :                     ; ************************************************************************************************************
 (1)    2/     300 :                     ; ************************************************************************************************************
 (1)    3/     300 :                     ;
@@ -817,9 +806,6 @@
 (1)   11/     309 :                     
 (1)   12/     309 : (MACRO)             	lri 	rc,ppVector-1 														; point to player (vector -1)
 (1)   12/     309 : F8 0C                       ldi     (PPVECTOR-1)/256
- AS V1.42 Beta [Bld 102] - source file game.asm(repaint.asm) - page 14 - 7/1/2016 17:20:22
-
-
 (1)   12/     30B : BC                          phi     RC
 (1)   12/     30C : F8 F8                       ldi     (PPVECTOR-1)&255
 (1)   12/     30E : AC                          plo     RC
@@ -831,6 +817,9 @@
 (1)   18/     313 : (MACRO)             	lri 	r5,DrawPlayerViewAtDepth 											; draw maze at given depth
 (1)   18/     313 : F8 02                       ldi     (DRAWPLAYERVIEWATDEPTH)/256
 (1)   18/     315 : B5                          phi     R5
+ AS V1.42 Beta [Bld 102] - source file game.asm(repaint.asm) - page 14 - 7/1/2016 18:14:24
+
+
 (1)   18/     316 : F8 79                       ldi     (DRAWPLAYERVIEWATDEPTH)&255
 (1)   18/     318 : A5                          plo     R5
 (1)   19/     319 : F8 00               	ldi 	0 																	; draw at each level
@@ -875,140 +864,156 @@
 (1)   38/     340 : D5                          sep     R5
 (1)   38/     341 : 22                          dec     r2
 (1)   39/     342 :                     
-(1)   40/     342 : (MACRO)             	lri 	r5,DrawSpriteGraphic 
-(1)   40/     342 : F8 03                       ldi     (DRAWSPRITEGRAPHIC)/256
-(1)   40/     344 : B5                          phi     R5
-(1)   40/     345 : F8 77                       ldi     (DRAWSPRITEGRAPHIC)&255
-(1)   40/     347 : A5                          plo     R5
- AS V1.42 Beta [Bld 102] - source file game.asm(repaint.asm) - page 15 - 7/1/2016 17:20:22
+(1)   40/     342 : (MACRO)             	lri 	rc,ppVector 														; point RC to the positional vector.
+(1)   40/     342 : F8 0C                       ldi     (PPVECTOR)/256
+(1)   40/     344 : BC                          phi     RC
+(1)   40/     345 : F8 F9                       ldi     (PPVECTOR)&255
+(1)   40/     347 : AC                          plo     RC
+(1)   41/     348 :                     __RPFindPrincess:
+(1)   42/     348 : 4C                  	lda 	rc 																	; get the position to check
+(1)   43/     349 : AD                  	plo 	rd 																	; make RD point to the map entry.
+(1)   44/     34A : F8 0D               	ldi 	map/256
+(1)   45/     34C : BD                  	phi 	rd 																	
+(1)   46/     34D : 0D                  	ldn 	rd 																	; read what's there.
+(1)   47/     34E : F6                  	shr 																		; shift bit 0 right into DF.
+(1)   48/     34F : 33 5C               	bdf 	__RPFoundPrincess 													; if true, then found princess
+(1)   49/     351 : 0D                  	ldn 	rd 																	; reload and look at bit 7
+(1)   50/     352 : FE                  	shl
+(1)   51/     353 : 33 6C               	bdf 	__RPStatus 															; if found a wall don't look further
+ AS V1.42 Beta [Bld 102] - source file game.asm(repaint.asm) - page 15 - 7/1/2016 18:14:24
 
 
-(1)   41/     348 : F8 00               	ldi 	0
-(1)   42/     34A : (MACRO)             	recall 	r5
-(1)   42/     34A : 79                          mark
-(1)   42/     34B : D5                          sep     R5
-(1)   42/     34C : 22                          dec     r2
-(1)   43/     34D : (MACRO)             	recall 	r5
-(1)   43/     34D : 79                          mark
-(1)   43/     34E : D5                          sep     R5
-(1)   43/     34F : 22                          dec     r2
-(1)   44/     350 : F8 08               	ldi 	8
-(1)   45/     352 : (MACRO)             	recall 	r5
-(1)   45/     352 : 79                          mark
-(1)   45/     353 : D5                          sep     R5
-(1)   45/     354 : 22                          dec     r2
-(1)   46/     355 : (MACRO)             	recall 	r5
-(1)   46/     355 : 79                          mark
-(1)   46/     356 : D5                          sep     R5
-(1)   46/     357 : 22                          dec     r2
-(1)   47/     358 :                     	
-(1)   48/     358 :                     	; draw status.
-(1)   49/     358 :                     
-(1)   50/     358 : F8 0F               	ldi 	Screen/256 															; not double buffered ?
-(1)   51/     35A : FB 0E               	xri 	Buffer/256
-(1)   52/     35C : 32 74               	bz 		__RepaintNoCopy
-(1)   53/     35E :                     
-(1)   54/     35E : (MACRO)             	lri 	rf,Screen 															; copy buffer to screen.
-(1)   54/     35E : F8 0F                       ldi     (SCREEN)/256
-(1)   54/     360 : BF                          phi     RF
-(1)   54/     361 : F8 00                       ldi     (SCREEN)&255
-(1)   54/     363 : AF                          plo     RF
-(1)   55/     364 : (MACRO)             	lri 	re,Buffer
-(1)   55/     364 : F8 0E                       ldi     (BUFFER)/256
-(1)   55/     366 : BE                          phi     RE
-(1)   55/     367 : F8 00                       ldi     (BUFFER)&255
-(1)   55/     369 : AE                          plo     RE
-(1)   56/     36A : EE                  	sex 	re
-(1)   57/     36B :                     __RepaintCopy:
-(1)   58/     36B : 72                  	ldxa
-(1)   59/     36C : 5F                  	str 	rf
-(1)   60/     36D : 1F                  	inc 	rf
-(1)   61/     36E : 72                  	ldxa
-(1)   62/     36F : 5F                  	str 	rf
-(1)   63/     370 : 1F                  	inc 	rf
-(1)   64/     371 : 8F                  	glo 	rf
-(1)   65/     372 : 3A 6B               	bnz 	__RepaintCopy	
-(1)   66/     374 :                     __RepaintNoCopy:
-(1)   67/     374 : (MACRO)             	return
-(1)   67/     374 : E2                          sex     r2
-(1)   67/     375 : 12                          inc     r2
-(1)   67/     376 : 70                          ret
-(1)   68/     377 :                     
-(1)   69/     377 :                     ; ************************************************************************************************************
-(1)   70/     377 :                     ; ************************************************************************************************************
-(1)   71/     377 :                     ;
-(1)   72/     377 :                     ;												Draw sprite graphic D
-(1)   73/     377 :                     ;
-(1)   74/     377 :                     ;	Uses RE,RF
-(1)   75/     377 :                     ; ************************************************************************************************************
-(1)   76/     377 :                     ; ************************************************************************************************************
-(1)   77/     377 :                     
- AS V1.42 Beta [Bld 102] - source file game.asm(repaint.asm) - page 16 - 7/1/2016 17:20:22
+(1)   52/     355 : 8C                  	glo 	rc 
+(1)   53/     356 : FB FD               	xri 	(ppVector+4) & 255
+(1)   54/     358 : 3A 48               	bnz 	__RPFindPrincess 													; not done 4, try next square.
+(1)   55/     35A : 30 6C               	br 		__RPStatus
+(1)   56/     35C :                     
+(1)   57/     35C :                     __RPFoundPrincess:
+(1)   58/     35C : (MACRO)             	lri 	rd,DrawSpriteGraphic 												; RD to sprite drawer.
+(1)   58/     35C : F8 03                       ldi     (DRAWSPRITEGRAPHIC)/256
+(1)   58/     35E : BD                          phi     RD
+(1)   58/     35F : F8 8B                       ldi     (DRAWSPRITEGRAPHIC)&255
+(1)   58/     361 : AD                          plo     RD
+(1)   59/     362 : 8C                  	glo 	rc 																	; calculate offset in vector
+(1)   60/     363 : FF FA               	smi 	(ppVector & 255)+1
+(1)   61/     365 : FE                  	shl 																		; x 2, 2 sprites per princess
+(1)   62/     366 : (MACRO)             	recall 	rd
+(1)   62/     366 : 79                          mark
+(1)   62/     367 : DD                          sep     RD
+(1)   62/     368 : 22                          dec     r2
+(1)   63/     369 : (MACRO)             	recall 	rd
+(1)   63/     369 : 79                          mark
+(1)   63/     36A : DD                          sep     RD
+(1)   63/     36B : 22                          dec     r2
+(1)   64/     36C :                     
+(1)   65/     36C :                     __RPStatus:
+(1)   66/     36C :                     	; draw status.
+(1)   67/     36C :                     
+(1)   68/     36C : F8 0F               	ldi 	Screen/256 															; not double buffered ?
+(1)   69/     36E : FB 0E               	xri 	Buffer/256
+(1)   70/     370 : 32 88               	bz 		__RepaintNoCopy
+(1)   71/     372 :                     
+(1)   72/     372 : (MACRO)             	lri 	rf,Screen 															; copy buffer to screen.
+(1)   72/     372 : F8 0F                       ldi     (SCREEN)/256
+(1)   72/     374 : BF                          phi     RF
+(1)   72/     375 : F8 00                       ldi     (SCREEN)&255
+(1)   72/     377 : AF                          plo     RF
+(1)   73/     378 : (MACRO)             	lri 	re,Buffer
+(1)   73/     378 : F8 0E                       ldi     (BUFFER)/256
+(1)   73/     37A : BE                          phi     RE
+(1)   73/     37B : F8 00                       ldi     (BUFFER)&255
+(1)   73/     37D : AE                          plo     RE
+(1)   74/     37E : EE                  	sex 	re
+(1)   75/     37F :                     __RepaintCopy:
+(1)   76/     37F : 72                  	ldxa
+(1)   77/     380 : 5F                  	str 	rf
+(1)   78/     381 : 1F                  	inc 	rf
+(1)   79/     382 : 72                  	ldxa
+(1)   80/     383 : 5F                  	str 	rf
+(1)   81/     384 : 1F                  	inc 	rf
+(1)   82/     385 : 8F                  	glo 	rf
+(1)   83/     386 : 3A 7F               	bnz 	__RepaintCopy	
+(1)   84/     388 :                     __RepaintNoCopy:
+(1)   85/     388 : (MACRO)             	return
+(1)   85/     388 : E2                          sex     r2
+(1)   85/     389 : 12                          inc     r2
+(1)   85/     38A : 70                          ret
+(1)   86/     38B :                     
+(1)   87/     38B :                     ; ************************************************************************************************************
+(1)   88/     38B :                     ; ************************************************************************************************************
+(1)   89/     38B :                     ;
+(1)   90/     38B :                     ;												Draw sprite graphic D
+ AS V1.42 Beta [Bld 102] - source file game.asm(repaint.asm) - page 16 - 7/1/2016 18:14:24
 
 
-(1)   78/     377 :                     DrawSpriteGraphic:
-(1)   79/     377 : 22                  	dec		r2 																	; save at R2
-(1)   80/     378 : 52                  	str 	r2
-(1)   81/     379 : FE                  	shl 																		; double the sprite number
-(1)   82/     37A : FC B0               	adi 	SpriteData & 255 													; add to sprite address, put in RF
-(1)   83/     37C : AF                  	plo 	rf
-(1)   84/     37D : F8 0A               	ldi 	SpriteData / 256
-(1)   85/     37F : 7C 00               	adci 	0
-(1)   86/     381 : BF                  	phi 	rf
-(1)   87/     382 : 4F                  	lda 	rf 																	; read address into RE.
-(1)   88/     383 : BE                  	phi 	re
-(1)   89/     384 : 4F                  	lda 	rf
-(1)   90/     385 : AE                  	plo 	re 
-(1)   91/     386 :                     
-(1)   92/     386 : 4E                  	lda 	re 																	; read the start drawing address
-(1)   93/     387 : AF                  	plo 	rf 																	; put into RF.
-(1)   94/     388 : F8 0E               	ldi 	buffer/256 															; make into screen address
-(1)   95/     38A : BF                  	phi 	rf
-(1)   96/     38B : EE                  	sex 	re 																	; RX is data
-(1)   97/     38C :                     
-(1)   98/     38C :                     __DSGLoop:
-(1)   99/     38C : 0E                  	ldn 	re 																	; read mask.
-(1)  100/     38D : FB FF               	xri 	0FFh 																; if $FF then finished
-(1)  101/     38F : 32 9D               	bz 		__DSGFinished
-(1)  102/     391 : 0F                  	ldn 	rf 																	; read screen
-(1)  103/     392 : F2                  	and 																		; and with mask
-(1)  104/     393 : 1E                  	inc 	re
-(1)  105/     394 : F1                  	or 																			; or with data
-(1)  106/     395 : 5F                  	str 	rf 																	; write out.
-(1)  107/     396 : 1E                  	inc 	re 																	; next down
-(1)  108/     397 : 8F                  	glo 	rf 																	 
-(1)  109/     398 : FC 08               	adi 	8
-(1)  110/     39A : AF                  	plo 	rf
-(1)  111/     39B : 30 8C               	br 		__DSGLoop
-(1)  112/     39D :                     
-(1)  113/     39D :                     __DSGFinished:
-(1)  114/     39D : 42                  	lda 	r2
-(1)  115/     39E : FC 01               	adi 	1
-(1)  116/     3A0 : (MACRO)             	return
-(1)  116/     3A0 : E2                          sex     r2
-(1)  116/     3A1 : 12                          inc     r2
-(1)  116/     3A2 : 70                          ret
-(1)  117/     3A3 :                     
-(1)  118/     3A3 :                     
-(1)  119/     3A3 : 30 77               	br 		DrawSpriteGraphic
-(1)  120/     3A5 :                     
-(1)  121/     3A5 :                     
-      87/     3A5 :                     
-      88/     AB0 :                     	org  	stack-240h 															; put gfx data at the end.	
-      89/     AB0 :                     SpriteData:	
-      90/     AB0 :                     	include graphics.inc 														
+(1)   91/     38B :                     ;
+(1)   92/     38B :                     ;	Uses RE,RF
+(1)   93/     38B :                     ; ************************************************************************************************************
+(1)   94/     38B :                     ; ************************************************************************************************************
+(1)   95/     38B :                     
+(1)   96/     38B :                     DrawSpriteGraphic:
+(1)   97/     38B : 22                  	dec		r2 																	; save at R2
+(1)   98/     38C : 52                  	str 	r2
+(1)   99/     38D : FE                  	shl 																		; double the sprite number
+(1)  100/     38E : FC B0               	adi 	SpriteData & 255 													; add to sprite address, put in RF
+(1)  101/     390 : AF                  	plo 	rf
+(1)  102/     391 : F8 0A               	ldi 	SpriteData / 256
+(1)  103/     393 : 7C 00               	adci 	0
+(1)  104/     395 : BF                  	phi 	rf
+(1)  105/     396 : 4F                  	lda 	rf 																	; read address into RE.
+(1)  106/     397 : BE                  	phi 	re
+(1)  107/     398 : 4F                  	lda 	rf
+(1)  108/     399 : AE                  	plo 	re 
+(1)  109/     39A :                     
+(1)  110/     39A : 4E                  	lda 	re 																	; read the start drawing address
+(1)  111/     39B : AF                  	plo 	rf 																	; put into RF.
+(1)  112/     39C : F8 0E               	ldi 	buffer/256 															; make into screen address
+(1)  113/     39E : BF                  	phi 	rf
+(1)  114/     39F : EE                  	sex 	re 																	; RX is data
+(1)  115/     3A0 :                     
+(1)  116/     3A0 :                     __DSGLoop:
+(1)  117/     3A0 : 0E                  	ldn 	re 																	; read mask.
+(1)  118/     3A1 : FB FF               	xri 	0FFh 																; if $FF then finished
+(1)  119/     3A3 : 32 B1               	bz 		__DSGFinished
+(1)  120/     3A5 : 0F                  	ldn 	rf 																	; read screen
+(1)  121/     3A6 : F2                  	and 																		; and with mask
+(1)  122/     3A7 : 1E                  	inc 	re
+(1)  123/     3A8 : F1                  	or 																			; or with data
+(1)  124/     3A9 : 5F                  	str 	rf 																	; write out.
+(1)  125/     3AA : 1E                  	inc 	re 																	; next down
+(1)  126/     3AB : 8F                  	glo 	rf 																	 
+(1)  127/     3AC : FC 08               	adi 	8
+(1)  128/     3AE : AF                  	plo 	rf
+(1)  129/     3AF : 30 A0               	br 		__DSGLoop
+(1)  130/     3B1 :                     
+(1)  131/     3B1 :                     __DSGFinished:
+(1)  132/     3B1 : 42                  	lda 	r2
+(1)  133/     3B2 : FC 01               	adi 	1
+(1)  134/     3B4 : (MACRO)             	return
+(1)  134/     3B4 : E2                          sex     r2
+(1)  134/     3B5 : 12                          inc     r2
+(1)  134/     3B6 : 70                          ret
+(1)  135/     3B7 :                     
+(1)  136/     3B7 :                     
+(1)  137/     3B7 : 30 8B               	br 		DrawSpriteGraphic
+(1)  138/     3B9 :                     
+(1)  139/     3B9 :                     
+      80/     3B9 :                     
+      81/     AB0 :                     	org  	stack-240h 															; put gfx data at the end.	
+      82/     AB0 :                     SpriteData:	
+      83/     AB0 :                     	include graphics.inc 														
 (1)    1/     AB0 : 0A D0                   dw __graphic00
 (1)    2/     AB2 : 0B 02                   dw __graphic01
 (1)    3/     AB4 : 0B 34                   dw __graphic02
 (1)    4/     AB6 : 0B 5A                   dw __graphic03
+ AS V1.42 Beta [Bld 102] - source file game.asm(graphics.inc) - page 17 - 7/1/2016 18:14:24
+
+
 (1)    5/     AB8 : 0B 80                   dw __graphic04
 (1)    6/     ABA : 0B 9E                   dw __graphic05
 (1)    7/     ABC : 0B BC                   dw __graphic06
 (1)    8/     ABE : 0B D2                   dw __graphic07
 (1)    9/     AC0 : 0B E8                   dw __graphic08
- AS V1.42 Beta [Bld 102] - source file game.asm(graphics.inc) - page 17 - 7/1/2016 17:20:22
-
-
 (1)   10/     AC2 : 0B FE                   dw __graphic09
 (1)   11/     AC4 : 0C 14                   dw __graphic10
 (1)   12/     AC6 : 0C 26                   dw __graphic11
@@ -1041,7 +1046,7 @@
 (1)   39/     AD0 :                     ;        ...X    
 (1)   40/     AD0 :                     ;        ....XXXX
 (1)   41/     AD0 :                     __graphic00:
-(1)   42/     AD0 : 3B                      db 03bh
+(1)   42/     AD0 : 4B                      db 04bh
 (1)   43/     AD1 : C0                      db 0c0h
 (1)   44/     AD2 : 11                      db 011h
 (1)   45/     AD3 : C0                      db 0c0h
@@ -1064,14 +1069,14 @@
 (1)   62/     AE4 : 2F                      db 02fh
 (1)   63/     AE5 : 00                      db 000h
 (1)   64/     AE6 : 4F                      db 04fh
+ AS V1.42 Beta [Bld 102] - source file game.asm(graphics.inc) - page 18 - 7/1/2016 18:14:24
+
+
 (1)   65/     AE7 : 00                      db 000h
 (1)   66/     AE8 : 47                      db 047h
 (1)   67/     AE9 : 00                      db 000h
 (1)   68/     AEA : 43                      db 043h
 (1)   69/     AEB : 00                      db 000h
- AS V1.42 Beta [Bld 102] - source file game.asm(graphics.inc) - page 18 - 7/1/2016 17:20:22
-
-
 (1)   70/     AEC : 41                      db 041h
 (1)   71/     AED : 80                      db 080h
 (1)   72/     AEE : 30                      db 030h
@@ -1095,7 +1100,7 @@
 (1)   90/     B00 : 00                      db 000h
 (1)   91/     B01 : FF                      db 0ffh
 (1)   92/     B02 :                     __graphic01:
-(1)   93/     B02 : 3C                      db 03ch
+(1)   93/     B02 : 4C                      db 04ch
 (1)   94/     B03 : 03                      db 003h
 (1)   95/     B04 : 88                      db 088h
 (1)   96/     B05 : 03                      db 003h
@@ -1127,14 +1132,14 @@
 (1)  122/     B1F : 01                      db 001h
 (1)  123/     B20 : 0C                      db 00ch
 (1)  124/     B21 : 03                      db 003h
+ AS V1.42 Beta [Bld 102] - source file game.asm(graphics.inc) - page 19 - 7/1/2016 18:14:24
+
+
 (1)  125/     B22 : 08                      db 008h
 (1)  126/     B23 : 03                      db 003h
 (1)  127/     B24 : 08                      db 008h
 (1)  128/     B25 : 03                      db 003h
 (1)  129/     B26 : 08                      db 008h
- AS V1.42 Beta [Bld 102] - source file game.asm(graphics.inc) - page 19 - 7/1/2016 17:20:22
-
-
 (1)  130/     B27 : 03                      db 003h
 (1)  131/     B28 : 08                      db 008h
 (1)  132/     B29 : 03                      db 003h
@@ -1167,7 +1172,7 @@
 (1)  159/     B34 :                     ;        ....X   
 (1)  160/     B34 :                     ;        .....XXX
 (1)  161/     B34 :                     __graphic02:
-(1)  162/     B34 : 4B                      db 04bh
+(1)  162/     B34 : 53                      db 053h
 (1)  163/     B35 : F6                      db 0f6h
 (1)  164/     B36 : 00                      db 000h
 (1)  165/     B37 : E0                      db 0e0h
@@ -1190,14 +1195,14 @@
 (1)  182/     B48 : 21                      db 021h
 (1)  183/     B49 : C0                      db 0c0h
 (1)  184/     B4A : 18                      db 018h
+ AS V1.42 Beta [Bld 102] - source file game.asm(graphics.inc) - page 20 - 7/1/2016 18:14:24
+
+
 (1)  185/     B4B : E0                      db 0e0h
 (1)  186/     B4C : 08                      db 008h
 (1)  187/     B4D : E0                      db 0e0h
 (1)  188/     B4E : 08                      db 008h
 (1)  189/     B4F : E0                      db 0e0h
- AS V1.42 Beta [Bld 102] - source file game.asm(graphics.inc) - page 20 - 7/1/2016 17:20:22
-
-
 (1)  190/     B50 : 08                      db 008h
 (1)  191/     B51 : E0                      db 0e0h
 (1)  192/     B52 : 08                      db 008h
@@ -1209,7 +1214,7 @@
 (1)  198/     B58 : 00                      db 000h
 (1)  199/     B59 : FF                      db 0ffh
 (1)  200/     B5A :                     __graphic03:
-(1)  201/     B5A : 4C                      db 04ch
+(1)  201/     B5A : 54                      db 054h
 (1)  202/     B5B : 6F                      db 06fh
 (1)  203/     B5C : 00                      db 000h
 (1)  204/     B5D : 07                      db 007h
@@ -1253,14 +1258,14 @@
 (1)  242/     B80 :                     ;        ....X XX
 (1)  243/     B80 :                     ;        ...X    
 (1)  244/     B80 :                     ;        ..X XX  
+ AS V1.42 Beta [Bld 102] - source file game.asm(graphics.inc) - page 21 - 7/1/2016 18:14:24
+
+
 (1)  245/     B80 :                     ;        ..X XXX 
 (1)  246/     B80 :                     ;        ..X  XXX
 (1)  247/     B80 :                     ;        ...X XXX
 (1)  248/     B80 :                     ;        ...X XXX
 (1)  249/     B80 :                     ;        ...X XXX
- AS V1.42 Beta [Bld 102] - source file game.asm(graphics.inc) - page 21 - 7/1/2016 17:20:22
-
-
 (1)  250/     B80 :                     ;        ...X XXX
 (1)  251/     B80 :                     ;        ....X   
 (1)  252/     B80 :                     ;        .....XXX
@@ -1316,14 +1321,14 @@
 (1)  302/     BAF : 07                      db 007h
 (1)  303/     BB0 : 10                      db 010h
 (1)  304/     BB1 : 07                      db 007h
+ AS V1.42 Beta [Bld 102] - source file game.asm(graphics.inc) - page 22 - 7/1/2016 18:14:24
+
+
 (1)  305/     BB2 : 10                      db 010h
 (1)  306/     BB3 : 07                      db 007h
 (1)  307/     BB4 : 10                      db 010h
 (1)  308/     BB5 : 07                      db 007h
 (1)  309/     BB6 : 10                      db 010h
- AS V1.42 Beta [Bld 102] - source file game.asm(graphics.inc) - page 22 - 7/1/2016 17:20:22
-
-
 (1)  310/     BB7 : 0F                      db 00fh
 (1)  311/     BB8 : E0                      db 0e0h
 (1)  312/     BB9 : 1F                      db 01fh
@@ -1340,7 +1345,7 @@
 (1)  323/     BBC :                     ;        .....X  
 (1)  324/     BBC :                     ;        ......XX
 (1)  325/     BBC :                     __graphic06:
-(1)  326/     BBC : 5B                      db 05bh
+(1)  326/     BBC : 53                      db 053h
 (1)  327/     BBD : F0                      db 0f0h
 (1)  328/     BBE : 05                      db 005h
 (1)  329/     BBF : F0                      db 0f0h
@@ -1363,7 +1368,7 @@
 (1)  346/     BD0 : 00                      db 000h
 (1)  347/     BD1 : FF                      db 0ffh
 (1)  348/     BD2 :                     __graphic07:
-(1)  349/     BD2 : 5C                      db 05ch
+(1)  349/     BD2 : 54                      db 054h
 (1)  350/     BD3 : 0F                      db 00fh
 (1)  351/     BD4 : A0                      db 0a0h
 (1)  352/     BD5 : 0F                      db 00fh
@@ -1379,14 +1384,14 @@
 (1)  362/     BDF : 0F                      db 00fh
 (1)  363/     BE0 : 20                      db 020h
 (1)  364/     BE1 : 0F                      db 00fh
+ AS V1.42 Beta [Bld 102] - source file game.asm(graphics.inc) - page 23 - 7/1/2016 18:14:24
+
+
 (1)  365/     BE2 : 20                      db 020h
 (1)  366/     BE3 : 1F                      db 01fh
 (1)  367/     BE4 : C0                      db 0c0h
 (1)  368/     BE5 : 3F                      db 03fh
 (1)  369/     BE6 : 00                      db 000h
- AS V1.42 Beta [Bld 102] - source file game.asm(graphics.inc) - page 23 - 7/1/2016 17:20:22
-
-
 (1)  370/     BE7 : FF                      db 0ffh
 (1)  371/     BE8 :                     ;        ....XXX.
 (1)  372/     BE8 :                     ;        ...X   X
@@ -1442,14 +1447,14 @@
 (1)  422/     C0F : 3F                      db 03fh
 (1)  423/     C10 : 80                      db 080h
 (1)  424/     C11 : 7F                      db 07fh
+ AS V1.42 Beta [Bld 102] - source file game.asm(graphics.inc) - page 24 - 7/1/2016 18:14:24
+
+
 (1)  425/     C12 : 00                      db 000h
 (1)  426/     C13 : FF                      db 0ffh
 (1)  427/     C14 :                     ;        .....XX.
 (1)  428/     C14 :                     ;        ....X  X
 (1)  429/     C14 :                     ;        ...X    
- AS V1.42 Beta [Bld 102] - source file game.asm(graphics.inc) - page 24 - 7/1/2016 17:20:22
-
-
 (1)  430/     C14 :                     ;        ...X    
 (1)  431/     C14 :                     ;        ....X   
 (1)  432/     C14 :                     ;        .....X  
@@ -1505,14 +1510,14 @@
 (1)  482/     C3A : 02                      db 002h
 (1)  483/     C3B : F0                      db 0f0h
 (1)  484/     C3C : 07                      db 007h
+ AS V1.42 Beta [Bld 102] - source file game.asm(graphics.inc) - page 25 - 7/1/2016 18:14:24
+
+
 (1)  485/     C3D : F0                      db 0f0h
 (1)  486/     C3E : 07                      db 007h
 (1)  487/     C3F : F8                      db 0f8h
 (1)  488/     C40 : 03                      db 003h
 (1)  489/     C41 : FC                      db 0fch
- AS V1.42 Beta [Bld 102] - source file game.asm(graphics.inc) - page 25 - 7/1/2016 17:20:22
-
-
 (1)  490/     C42 : 01                      db 001h
 (1)  491/     C43 : FE                      db 0feh
 (1)  492/     C44 : 00                      db 000h
@@ -1560,17 +1565,20 @@
 (1)  534/     C67 : FF                      db 0ffh
 (1)  535/     C68 :                     ; 408
 (1)  536/     C68 :                     
-      91/     C68 :                     
-      92/     C68 :                     ;	TODO: 	
-      93/     C68 :                     ;			Sprite drawing 
-      94/     C68 :                     ;			Put princesses in the maze.
-      95/     C68 :                     ;			Add visual on princesses
-      96/     C68 :                     ;			Add movement around
-      97/     C68 :                     ; 			Add closeness sound effect
-      98/     C68 :                     ; 			Add heartbeat and adjustment
-      99/     C68 :                     ; 			Consider a back-buffer ?
-     100/     C68 :                     
- AS V1.42 Beta [Bld 102] - source file game.asm - page 26 - 7/1/2016 17:20:22
+      84/     C68 :                     
+      85/     C68 :                     ;	TODO: 	
+      86/     C68 :                     ;			Sprite drawing 
+      87/     C68 :                     ;			Put princesses in the maze.
+      88/     C68 :                     ;			Add visual on princesses
+      89/     C68 :                     ;			Add movement around
+      90/     C68 :                     ; 			Add closeness sound effect
+      91/     C68 :                     ; 			Add heartbeat and adjustment
+ AS V1.42 Beta [Bld 102] - source file game.asm - page 26 - 7/1/2016 18:14:24
+
+
+      92/     C68 :                     ; 			Consider a back-buffer ?
+      93/     C68 :                     
+ AS V1.42 Beta [Bld 102] - source file game.asm - page 27 - 7/1/2016 18:14:24
 
 
   symbol table (* = unused):
@@ -1580,70 +1588,71 @@
 *BRANCHEXT :                      0 - |  BUFFER :                       E00 - |
 *CASESENSITIVE :                  0 - |  CODE :                         100 C |
 *CONSTPI :        3.141592653589793 - |  CREATEMAZE :                   11E C |
-*DATE :                    7/1/2016 - |  DELAY :                         41 C |
- DIRECTION :                    CF7 - |  DOOROPEN :                     200 C |
- DRAWPLAYERVIEWATDEPTH :        279 C |  DRAWSPRITEGRAPHIC :            377 C |
-*FALSE :                          0 - | *FULLPMMU :                       1 - |
-*GETPLAYERNEXTCURRENT :         24E C |  GETPLAYERNEXTOFFSET :          250 C |
-*HAS64 :                          1 - | *HASDSP :                         0 - |
-*HASFPU :                         0 - | *HASPMMU :                        0 - |
-*INEXTMODE :                      0 - | *INLWORDMODE :                    0 - |
-*INMAXMODE :                      0 - | *INSRCMODE :                      0 - |
-*INSUPMODE :                      0 - |  INTERRUPT :                    102 C |
-*LISTON :                         1 - |  LOOP :                          26 C |
-*MACEXP :                         1 - |  MAIN :                          12 C |
- MAP :                          D00 - |  MAZE_OPEN :                      0 - |
-*MAZE_PRINCESS :                  1 - |  MAZE_WALL :                     80 - |
- MIRRORDISPLAY :                1E7 C | *MOMCPU :                      1802 - |
-*MOMCPUNAME :                  1802 - | *NESTMAX :                      100 - |
-*PACKING :                        0 - | *PADDING :                        1 - |
- PLAYER :                       CF8 - |  PLAYERDIRECTIONTABLE :         275 C |
- PPVECTOR :                     CF9 - |  R0 :                             0 - |
- R1 :                             1 - |  R2 :                             2 - |
- R3 :                             3 - |  R4 :                             4 - |
- R5 :                             5 - | *R6 :                             6 - |
-*R7 :                             7 - | *R8 :                             8 - |
-*R9 :                             9 - |  RA :                             A - |
- RANDOMNUMBER :                 172 C |  RB :                             B - |
- RC :                             C - |  RD :                             D - |
- RE :                             E - |  REFRESH :                      10F C |
-*RELAXED :                        0 - |  REPAINT :                      300 C |
- REPAINTDISPLAYOUTLINE :        198 C |  RESETPLAYER :                  23E C |
- RETURN :                       100 C |  RF :                             F - |
- SCREEN :                       F00 - |  SPRITEDATA :                   AB0 C |
- STACK :                        CF0 - | *TIME :                    17:20:22 - |
-*TRUE :                           1 - | *VERSION :                     142F - |
- WAIT :                          47 C |  _MDLOOP :                      1ED C |
- _RDCLEAR :                     1A0 C |  _RDDRAWBYTEBLOCKS :            1BB C |
- _RDLOOP :                      1AD C |  _RDNOSOLID :                   1C6 C |
- _RDRESETMASKS :                1A7 C |  __CMFILL :                     125 C |
- __CMGENERATE :                 138 C |  __CMNEXT :                     169 C |
- __CMNOTDOWN :                  169 C |  __CMNOTRIGHT :                 157 C |
- __DOLEFTMASK :                 208 C |  __DOMASK :                     20F C |
- __DONOADJUST :                 22D C |  __DONOTRIGHT :                 222 C |
- __DPVDRAWLINE :                2D6 C |  __DPVDRAWWALL :                2CD C |
- __DPVEXIT :                    2E8 C |  __DPVEXITWALL :                2E5 C |
- __DPVNOLEFTWALL :              2AD C |  __DPVNORIGHTWALL :             2B7 C |
- __DSGFINISHED :                39D C |  __DSGLOOP :                    38C C |
- __GRAPHIC00 :                  AD0 C |  __GRAPHIC01 :                  B02 C |
- __GRAPHIC02 :                  B34 C |  __GRAPHIC03 :                  B5A C |
- __GRAPHIC04 :                  B80 C |  __GRAPHIC05 :                  B9E C |
- __GRAPHIC06 :                  BBC C |  __GRAPHIC07 :                  BD2 C |
- __GRAPHIC08 :                  BE8 C |  __GRAPHIC09 :                  BFE C |
- __GRAPHIC10 :                  C14 C |  __GRAPHIC11 :                  C26 C |
- __GRAPHIC12 :                  C38 C |  __GRAPHIC13 :                  C46 C |
- __GRAPHIC14 :                  C54 C |  __GRAPHIC15 :                  C5E C |
- AS V1.42 Beta [Bld 102] - source file game.asm - page 27 - 7/1/2016 17:20:22
+*DATE :                    7/1/2016 - |  DIRECTION :                    CF7 - |
+ DOOROPEN :                     200 C |  DRAWPLAYERVIEWATDEPTH :        279 C |
+ DRAWSPRITEGRAPHIC :            38B C | *FALSE :                          0 - |
+*FULLPMMU :                       1 - | *GETPLAYERNEXTCURRENT :         24E C |
+ GETPLAYERNEXTOFFSET :          250 C | *HAS64 :                          1 - |
+*HASDSP :                         0 - | *HASFPU :                         0 - |
+*HASPMMU :                        0 - | *INEXTMODE :                      0 - |
+*INLWORDMODE :                    0 - | *INMAXMODE :                      0 - |
+*INSRCMODE :                      0 - | *INSUPMODE :                      0 - |
+ INTERRUPT :                    102 C | *LISTON :                         1 - |
+ LOOP :                          26 C | *MACEXP :                         1 - |
+ MAIN :                          12 C |  MAP :                          D00 - |
+ MAZE_OPEN :                      0 - | *MAZE_PRINCESS :                  1 - |
+ MAZE_WALL :                     80 - |  MIRRORDISPLAY :                1E7 C |
+*MOMCPU :                      1802 - | *MOMCPUNAME :                  1802 - |
+*NESTMAX :                      100 - | *PACKING :                        0 - |
+*PADDING :                        1 - |  PLAYER :                       CF8 - |
+ PLAYERDIRECTIONTABLE :         275 C |  PPVECTOR :                     CF9 - |
+ R0 :                             0 - |  R1 :                             1 - |
+ R2 :                             2 - |  R3 :                             3 - |
+ R4 :                             4 - |  R5 :                             5 - |
+*R6 :                             6 - | *R7 :                             7 - |
+ R8 :                             8 - | *R9 :                             9 - |
+ RA :                             A - |  RANDOMNUMBER :                 172 C |
+ RB :                             B - |  RC :                             C - |
+ RD :                             D - |  RE :                             E - |
+ REFRESH :                      10F C | *RELAXED :                        0 - |
+ REPAINT :                      300 C |  REPAINTDISPLAYOUTLINE :        198 C |
+ RESETPLAYER :                  23E C |  RETURN :                       100 C |
+ RF :                             F - |  SCREEN :                       F00 - |
+ SPRITEDATA :                   AB0 C |  STACK :                        CF0 - |
+*TIME :                    18:14:24 - | *TRUE :                           1 - |
+*VERSION :                     142F - |  WAIT :                          3E C |
+ _MDLOOP :                      1ED C |  _RDCLEAR :                     1A0 C |
+ _RDDRAWBYTEBLOCKS :            1BB C |  _RDLOOP :                      1AD C |
+ _RDNOSOLID :                   1C6 C |  _RDRESETMASKS :                1A7 C |
+ __CMFILL :                     125 C |  __CMGENERATE :                 138 C |
+ __CMNEXT :                     169 C |  __CMNOTDOWN :                  169 C |
+ __CMNOTRIGHT :                 157 C |  __DOLEFTMASK :                 208 C |
+ __DOMASK :                     20F C |  __DONOADJUST :                 22D C |
+ __DONOTRIGHT :                 222 C |  __DPVDRAWLINE :                2D6 C |
+ __DPVDRAWWALL :                2CD C |  __DPVEXIT :                    2E8 C |
+ __DPVEXITWALL :                2E5 C |  __DPVNOLEFTWALL :              2AD C |
+ __DPVNORIGHTWALL :             2B7 C |  __DSGFINISHED :                3B1 C |
+ __DSGLOOP :                    3A0 C |  __GRAPHIC00 :                  AD0 C |
+ __GRAPHIC01 :                  B02 C |  __GRAPHIC02 :                  B34 C |
+ __GRAPHIC03 :                  B5A C |  __GRAPHIC04 :                  B80 C |
+ __GRAPHIC05 :                  B9E C |  __GRAPHIC06 :                  BBC C |
+ __GRAPHIC07 :                  BD2 C |  __GRAPHIC08 :                  BE8 C |
+ __GRAPHIC09 :                  BFE C |  __GRAPHIC10 :                  C14 C |
+ __GRAPHIC11 :                  C26 C |  __GRAPHIC12 :                  C38 C |
+ __GRAPHIC13 :                  C46 C |  __GRAPHIC14 :                  C54 C |
+ __GRAPHIC15 :                  C5E C |  __REPAINTCOPY :                37F C |
+ AS V1.42 Beta [Bld 102] - source file game.asm - page 28 - 7/1/2016 18:14:24
 
 
- __REPAINTCOPY :                36B C |  __REPAINTEXIT :                333 C |
- __REPAINTNOCOPY :              374 C |  __RNHIGHM1 :                   178 C |
- __RNLOWM1 :                    17F C |  __RNNOTOGGLE :                 18E C |
+ __REPAINTEXIT :                333 C |  __REPAINTNOCOPY :              388 C |
+ __RNHIGHM1 :                   178 C |  __RNLOWM1 :                    17F C |
+ __RNNOTOGGLE :                 18E C |  __RPFINDPRINCESS :             348 C |
+ __RPFOUNDPRINCESS :            35C C |  __RPSTATUS :                   36C C |
 
-    120 symbols
-     34 unused symbols
+    122 symbols
+     33 unused symbols
 
- AS V1.42 Beta [Bld 102] - source file game.asm - page 28 - 7/1/2016 17:20:22
+ AS V1.42 Beta [Bld 102] - source file game.asm - page 29 - 7/1/2016 18:14:24
 
 
   defined macros:
@@ -1654,7 +1663,7 @@ RECALL                                | RETURN
 
       4 macros
 
- AS V1.42 Beta [Bld 102] - source file game.asm - page 29 - 7/1/2016 17:20:22
+ AS V1.42 Beta [Bld 102] - source file game.asm - page 30 - 7/1/2016 18:14:24
 
 
   codepages:
@@ -1665,8 +1674,8 @@ STANDARD (0 changed characters)
 
 0.02 seconds assembly time
 
-   1297 lines source file
-   1497 lines incl. macro expansions
+   1308 lines source file
+   1502 lines incl. macro expansions
       2 passes
       0 errors
       0 warnings
