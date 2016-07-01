@@ -1,44 +1,26 @@
 
 	cpu 	1802
-
-
-display = 00Fh																	; this page has the display in it
-map = 00Eh 																		; this page has the map in it.
-stack = 00Dh 																	; this page has the stack in it.
-
+	
 r0 = 0
 r1 = 1
 r2 = 2
 r3 = 3
 r4 = 4
 r5 = 5
-r6 = 6
-r7 = 7
-r8 = 8
-r9 = 9
-rf = 15
 
 	ghi 	r0
 	phi		r1
-
-	ldi 	stack
 	phi		r2
-	ldi 	0FFh
-	plo 	r2
 
-	ldi 	Main / 256
-	phi 	r3
+	plo		r3
+	plo 	r4
+
 	ldi 	Main & 255
 	plo 	r3
-
-	ldi 	Interrupt / 256
-	phi 	r1
+	ldi 	Stack & 255
+	plo 	r2
 	ldi 	Interrupt & 255
 	plo 	r1
-
-	sex 	r2
-	inp		1
-
 	sep 	r3
 
 Return:
@@ -52,7 +34,7 @@ Interrupt:
 	nop
 	nop
 	nop
-	ldi 	display
+	ldi 	0
 	phi 	r0
 	ldi 	0
 	plo 	r0
@@ -75,121 +57,49 @@ Refresh:
 	bn1 	Refresh
 	br 		Return
 
-	org 	0100h
-
 Main:
-
-; ************************************************************************************************************
-; ************************************************************************************************************
-;
-;												Repaint entire display
-;
-; ************************************************************************************************************
-; ************************************************************************************************************
-
-RepaintDisplay:
-	ldi 	display 															; r4 points to display position.
-	phi 	r4 																	; so does R5 as we're going to clear it
-	phi 	r5 																	; the top half of the screen
-	ldi 	0
-	plo 	r4
+	sex 	r2
+	inp		1
+Wait:
+	ldi 	0FCh
 	plo 	r5
-_RDClear:
-	glo 	r4 																	; R4.0 is zero
-	str 	r5 																	; fill display RAM with it.
-	inc 	r5
-	glo 	r5
-	shlc 																		; only do it half way as we copy
-	bnf 	_RDClear 															; the bottom half.
-
-; ************************************************************************************************************
-;									    Come back here to reset the masks
-; ************************************************************************************************************
-
-RepaintDisplayResetMasks:
-	ldi 	0C0h 																; r7.0 is 11000000 (left write)
-	plo 	r7
-	ldi 	3 																	; r7.1 is 00000011 (right write)
-	phi 	r7
-
-; ************************************************************************************************************
-;				Main repaint loop. R4 points to the line position. R7.0 left mask R7.1 right mask
-; ************************************************************************************************************
-
-RepaintDisplayLoop:
-	ghi		r4 																	; copy R4.1 to R5.1 and R6.1
-	phi 	r5 																	
-	phi 	r6
-	glo 	r4 																	; are there no solid blocks yet ?
-	ani 	7
-	bz 		RepaintNoSolid
-	glo 	r4 																	; R5.0 will point to left bit
-	plo 	r5
-	xri 	7																	; R5.1 will point to right bit
-	plo 	r6																	
-	dec 	r5
-
-PaintSolidBlocks:
-	ldi 	0FFh 																; write solid block on left.
-	str 	r5
-	str 	r6
-	dec 	r5 																	; move left left and right right
-	inc 	r6
-	glo 	r6 																	; if right hasn't wrapped around
-	ani 	7
-	bnz 	PaintSolidBlocks
-RepaintNoSolid:
-
-	glo 	r4 																	; set R5 and R6 to point to write
-	plo 	r5
-	xri 	7
-	plo 	r6
-
-	glo 	r4 																	; point R4 to the next line.
-	adi 	8
-	plo 	r4
-
-	glo 	r7																	; write left mask
-	str 	r5
-	shrc 																		; update the left mask.
-	shrc	
-	ori 	0C0h
-	plo 	r7
-
-	ghi 	r7 																	; write right mask
-	str 	r6
-	shlc 																		; update the right mask.
-	shlc 
-	ori 	3
-	phi	 	r7
-
-	bnf 	RepaintDisplayLoop
-	inc 	r4 																	; step out 1.
-	glo 	r4 																	; if not half way down loop back.
-	shlc
-	bnf 	RepaintDisplayResetMasks
-
-; ************************************************************************************************************
-;									Now copy top half to bottom half upside down
-; ************************************************************************************************************
-	
-	ldi 	Display 															; R4 points to screen top
-	phi 	r4 
-	ldi 	0  															
-	plo 	r4 
-MirrorLoop:
-	glo 	r4 																	; set up bottom pointer r5
-	xri 	0F8h
-	plo 	r5	
-	ghi	 	r4
-	phi 	r5
-	lda 	r4 																	; copy data bumping R4
+	sex 	r5
+	ldi 	081h
+	bn4		NoKey
+	ldi 	0FFh
+NoKey:
 	str 	r5
 	inc 	r5
-	glo 	r4
-	shlc 	
-	bnf 	MirrorLoop
+	inc 	r5
+	inp 	4
+	out 	4
+	br 		Wait
 
-wait:
-	br 		wait
-	
+Stack = 04Eh	
+
+	org 	50h
+;	db 000h,000h,000h,000h,000h,000h,000h,000h
+;	db 000h,000h,000h,000h,000h,000h,000h,000h
+	db 07Bh,0DEh,0DBh,0DEh,000h,000h,000h,000h
+	db 04Ah,050h,0DAh,052h,000h,000h,000h,000h
+	db 042h,05Eh,0ABh,0D0h,000h,000h,000h,000h
+	db 04Ah,042h,08Ah,052h,000h,000h,000h,000h
+	db 07Bh,0DEh,08Ah,05Eh,000h,000h,000h,000h
+	db 000h,000h,000h,000h,000h,000h,000h,000h
+	db 000h,000h,000h,000h,000h,000h,007h,0E0h
+	db 000h,000h,000h,000h,0FFh,0FFh,0FFh,0FFh
+	db 000h,006h,000h,001h,000h,000h,000h,001h
+	db 000h,07Fh,0E0h,001h,000h,000h,000h,002h
+	db 07Fh,0C0h,03Fh,0E0h,0FCh,0FFh,0FFh,0FEh
+	db 040h,00Fh,000h,010h,004h,080h,000h,000h
+	db 07Fh,0C0h,03Fh,0E0h,004h,080h,000h,000h
+	db 000h,03Fh,0D0h,040h,004h,080h,000h,000h
+	db 000h,00Fh,008h,020h,004h,080h,07Ah,01Eh
+	db 000h,000h,007h,090h,004h,080h,042h,010h
+	db 000h,000h,018h,07Fh,0FCh,0F0h,072h,01Ch
+	db 000h,000h,030h,000h,000h,010h,042h,010h
+	db 000h,000h,073h,0FCh,000h,010h,07Bh,0D0h
+	db 000h,000h,030h,000h,03Fh,0F0h,000h,000h
+	db 000h,000h,018h,00Fh,0C0h,000h,000h,000h
+	db 000h,000h,007h,0F0h,000h,000h,000h,000h
+

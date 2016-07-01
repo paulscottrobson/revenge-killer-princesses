@@ -44,24 +44,40 @@
 #include "__1802_macros.h"
 static BYTE8 ramMemory[MEMORYSIZE];													
 
+static BYTE8 romMonitor[512] = 
+{
+	#include "binaries\monitor_rom.h"
+};
+
 // *******************************************************************************************************************************
 //											 Memory and I/O read and write macros
 // *******************************************************************************************************************************
 
-#define READ(a) 	ramMemory[(a) & MEMORYMASK]
-#define WRITE(a,d) 	ramMemory[(a) & MEMORYMASK] = d
+#define READ(a) 	__Read(a)
+#define WRITE(a,d) 	__Write(a,d)
+
+static inline BYTE8 __Read(WORD16 addr)
+{
+	if (addr < MEMORYSIZE) return ramMemory[addr];
+	if (addr >= 0x8000) return romMonitor[addr & 0x1FF];
+	return DEFAULT_BUS_VALUE;
+}
+
+static inline void __Write(WORD16 addr,WORD16 data)
+{
+	if (addr < MEMORYSIZE) ramMemory[addr] = data;
+}
 
 // *******************************************************************************************************************************
 //													   Port Interfaces
 // *******************************************************************************************************************************
 
 #define INPORT1() 	(HWISetScreenOn(1),DEFAULT_BUS_VALUE)							// INP 1 screen on
-#define INPORT4()	HWIReadKeypadLatch()											// INP 4 Keypad latch.
 #define OUTPORT1(n)	HWISetScreenOn(0)												// OUT 1 screen off
-#define OUTPORT4(n) HWISetDigitDisplay(n)											// OUT 4 led display
+#define OUTPORT2(n) HWIWriteKeypadLatch(n);											// OUT 2 write keyboard latch
 
 #define EFLAG1() 	(1)																// EF1 is always set.
-#define EFLAG4() 	(HWIIsInPressed() != 0)											// EF4 is the IN Key.
+#define EFLAG3() 	(HWIReadKeypadPressed() != 0)									// EF4 is the IN Key.
 
 #include "__1802_ports.h"															// Default connections.
 
@@ -72,6 +88,15 @@ static BYTE8 ramMemory[MEMORYSIZE];
 void CPUReset(void) {
 	RESET();																		// CPU Reset
 	HWIReset();																		// Hardware reset
+
+	//
+	//	Set up as if Monitor ROM partly booted so we don't have to emulate Out 4.
+	//
+	R[0] = 0x0008; 																	// R0 = $0008
+	R[2] = 0x8008;																	// R2 = $8088
+	X = P = 2;																		// X = P = 2
+
+	//romMonitor[0x22] = 0x30;														// Forces Monitor Boot.
 }
 
 // *******************************************************************************************************************************

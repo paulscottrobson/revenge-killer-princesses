@@ -1,4 +1,4 @@
- AS V1.42 Beta [Bld 102] - source file game.asm - page 1 - 6/30/2016 22:27:01
+ AS V1.42 Beta [Bld 102] - source file game.asm - page 1 - 7/1/2016 7:55:58
 
 
        1/       0 :                     
@@ -22,9 +22,9 @@
 (1)   17/       0 : =6H                 r6 = 6
 (1)   18/       0 : =7H                 r7 = 7
 (1)   19/       0 : =8H                 r8 = 8
-(1)   20/       0 : =9H                 r9 = 9
+(1)   20/       0 : =9H                 r9 = 9 						
 (1)   21/       0 : =AH                 ra = 10
-(1)   22/       0 : =BH                 rb = 11
+(1)   22/       0 : =BH                 rb = 11 																		; stops us using RB accidentally
 (1)   23/       0 : =CH                 rc = 12
 (1)   24/       0 : =DH                 rd = 13
 (1)   25/       0 : =EH                 re = 14
@@ -61,7 +61,7 @@
        6/       0 : =DF0H               stack = 	0DF0h 																; stack top
        7/       0 :                     
        8/       0 : =DF9H               ppvector =  0DF9h																; player position vector.
- AS V1.42 Beta [Bld 102] - source file game.asm - page 2 - 6/30/2016 22:27:01
+ AS V1.42 Beta [Bld 102] - source file game.asm - page 2 - 7/1/2016 7:55:58
 
 
        9/       0 : =DF8H               player = 	0DF8h 																; player offset in map
@@ -124,7 +124,7 @@
       28/      32 : F8 F8                       ldi     (PPVECTOR-1)&255
       28/      34 : AC                          plo     RC
       29/      35 : 0C                  	ldn 	rc 																	; read player position
- AS V1.42 Beta [Bld 102] - source file game.asm - page 3 - 6/30/2016 22:27:01
+ AS V1.42 Beta [Bld 102] - source file game.asm - page 3 - 7/1/2016 7:55:58
 
 
       30/      36 : 1C                  	inc 	rc
@@ -187,7 +187,7 @@
       58/      6D : A4                          plo     R4
       59/      6E : 04                  	ldn 	r4
       60/      6F : FC 01               	adi 	1
- AS V1.42 Beta [Bld 102] - source file game.asm - page 4 - 6/30/2016 22:27:01
+ AS V1.42 Beta [Bld 102] - source file game.asm - page 4 - 7/1/2016 7:55:58
 
 
       61/      71 : FA 03               	ani 	3
@@ -250,7 +250,7 @@
 (1)   35/     117 :                     
 (1)   36/     117 : E2                  	sex 	r2
 (1)   37/     118 : 20                  	dec 	r0
- AS V1.42 Beta [Bld 102] - source file game.asm(interrupt.asm) - page 5 - 6/30/2016 22:27:01
+ AS V1.42 Beta [Bld 102] - source file game.asm(interrupt.asm) - page 5 - 7/1/2016 7:55:58
 
 
 (1)   38/     119 : A0                  	plo 	r0
@@ -313,7 +313,7 @@
 (1)   40/     149 : (MACRO)             	recall 	r5																	; random number
 (1)   40/     149 : 79                          mark
 (1)   40/     14A : D5                          sep     R5
- AS V1.42 Beta [Bld 102] - source file game.asm(maze.asm) - page 6 - 6/30/2016 22:27:01
+ AS V1.42 Beta [Bld 102] - source file game.asm(maze.asm) - page 6 - 7/1/2016 7:55:58
 
 
 (1)   40/     14B : 22                          dec     r2
@@ -376,7 +376,7 @@
 (1)   87/     17F :                     __RNLowM1:
 (1)   88/     17F : F8 E1               	ldi 	0E1h 																; get upper seeded value
 (1)   89/     181 : 76                  	shrc  																		; rotate it right and in
- AS V1.42 Beta [Bld 102] - source file game.asm(maze.asm) - page 7 - 6/30/2016 22:27:01
+ AS V1.42 Beta [Bld 102] - source file game.asm(maze.asm) - page 7 - 7/1/2016 7:55:58
 
 
 (1)   90/     182 : 5F                  	str 	rf 																	; write it back.
@@ -439,7 +439,7 @@
 (1)   36/     1AD :                     ;				Main repaint loop. rc points to the line position. rf.0 left mask rf.1 right mask
 (1)   37/     1AD :                     ; ************************************************************************************************************
 (1)   38/     1AD :                     
- AS V1.42 Beta [Bld 102] - source file game.asm(repaint.asm) - page 8 - 6/30/2016 22:27:01
+ AS V1.42 Beta [Bld 102] - source file game.asm(repaint.asm) - page 8 - 7/1/2016 7:55:58
 
 
 (1)   39/     1AD :                     _RDLoop:
@@ -502,7 +502,7 @@
 (1)   96/     1DF : 1C                  	inc 	rc 																	; step out 1.
 (1)   97/     1E0 : 8C                  	glo 	rc 																	; if not half way down loop back.
 (1)   98/     1E1 : 7E                  	shlc
- AS V1.42 Beta [Bld 102] - source file game.asm(repaint.asm) - page 9 - 6/30/2016 22:27:01
+ AS V1.42 Beta [Bld 102] - source file game.asm(repaint.asm) - page 9 - 7/1/2016 7:55:58
 
 
 (1)   99/     1E2 : 3B A7               	bnf 	_RDResetMasks
@@ -565,7 +565,7 @@
 (1)   13/     202 : FA 04               	ani 	4 																	; 0 for left, 4 for right.
 (1)   14/     204 : 32 08               	bz 		__DOLeftMask
 (1)   15/     206 : F8 81               	ldi 	081h 																
- AS V1.42 Beta [Bld 102] - source file game.asm(door.asm) - page 10 - 6/30/2016 22:27:01
+ AS V1.42 Beta [Bld 102] - source file game.asm(door.asm) - page 10 - 7/1/2016 7:55:58
 
 
 (1)   16/     208 :                     __DOLeftMask:																	; 0 for left $81 for right	
@@ -628,7 +628,7 @@
 (1)    8/     23E :                     ; ************************************************************************************************************
 (1)    9/     23E :                     
 (1)   10/     23E :                     ResetPlayer:
- AS V1.42 Beta [Bld 102] - source file game.asm(player.asm) - page 11 - 6/30/2016 22:27:01
+ AS V1.42 Beta [Bld 102] - source file game.asm(player.asm) - page 11 - 7/1/2016 7:55:58
 
 
 (1)   11/     23E : (MACRO)             	lri 	rf,Player 															; initialise pointer, use RF as index
@@ -691,7 +691,7 @@
 (1)   51/     271 : 12                          inc     r2
 (1)   51/     272 : 70                          ret
 (1)   52/     273 : 30 50               	br 		GetPlayerNextOffset 												; re-entrant into next offset.
- AS V1.42 Beta [Bld 102] - source file game.asm(player.asm) - page 12 - 6/30/2016 22:27:01
+ AS V1.42 Beta [Bld 102] - source file game.asm(player.asm) - page 12 - 7/1/2016 7:55:58
 
 
 (1)   53/     275 :                     
@@ -754,7 +754,7 @@
 (1)   90/     2A2 : F8 00                       ldi     (DOOROPEN)&255
 (1)   90/     2A4 : A5                          plo     R5
 (1)   91/     2A5 : 87                  	glo 	r7 																	; wall on left side ?
- AS V1.42 Beta [Bld 102] - source file game.asm(player.asm) - page 13 - 6/30/2016 22:27:01
+ AS V1.42 Beta [Bld 102] - source file game.asm(player.asm) - page 13 - 7/1/2016 7:55:58
 
 
 (1)   92/     2A6 : FE                  	shl
@@ -817,7 +817,7 @@
 (1)  143/     2E3 : 3B CD               	bnf 	__DPVDrawWall 														; go back if not reached half way.
 (1)  144/     2E5 :                     __DPVExitWall:
 (1)  145/     2E5 : F8 FF               	ldi 	0FFh 																; set DF.
- AS V1.42 Beta [Bld 102] - source file game.asm(player.asm) - page 14 - 6/30/2016 22:27:01
+ AS V1.42 Beta [Bld 102] - source file game.asm(player.asm) - page 14 - 7/1/2016 7:55:58
 
 
 (1)  146/     2E7 : FE                  	shl
@@ -836,7 +836,7 @@
       91/     2EE :                     ;			Add visual on princesses
       92/     2EE :                     ;			Add basic control ?
       93/     2EE :                     
- AS V1.42 Beta [Bld 102] - source file game.asm - page 15 - 6/30/2016 22:27:01
+ AS V1.42 Beta [Bld 102] - source file game.asm - page 15 - 7/1/2016 7:55:58
 
 
   symbol table (* = unused):
@@ -845,7 +845,7 @@
 *ARCHITECTURE :  i386-unknown-win32 - | *BIGENDIAN :                      0 - |
 *BRANCHEXT :                      0 - | *CASESENSITIVE :                  0 - |
  CODE :                         100 C | *CONSTPI :        3.141592653589793 - |
- CREATEMAZE :                   11E C | *DATE :                   6/30/2016 - |
+ CREATEMAZE :                   11E C | *DATE :                    7/1/2016 - |
  DELAY :                         7A C |  DIRECTION :                    DF7 - |
  DISPLAY :                      F00 - |  DOOROPEN :                     200 C |
  DRAWPLAYERVIEWATDEPTH :        279 C | *FALSE :                          0 - |
@@ -875,7 +875,7 @@
 *RELAXED :                        0 - |  REPAINT :                       26 C |
  REPAINTDISPLAY :               198 C |  RESETPLAYER :                  23E C |
  RETURN :                       100 C |  RF :                             F - |
- STACK :                        DF0 - | *TIME :                    22:27:01 - |
+ STACK :                        DF0 - | *TIME :                     7:55:58 - |
 *TRUE :                           1 - | *VERSION :                     142F - |
  WAIT :                          80 C |  _MDLOOP :                      1ED C |
  _RDCLEAR :                     1A0 C |  _RDDRAWBYTEBLOCKS :            1BB C |
@@ -894,7 +894,7 @@
      96 symbols
      33 unused symbols
 
- AS V1.42 Beta [Bld 102] - source file game.asm - page 16 - 6/30/2016 22:27:01
+ AS V1.42 Beta [Bld 102] - source file game.asm - page 16 - 7/1/2016 7:55:58
 
 
   defined macros:
@@ -905,7 +905,7 @@ RECALL                                | RETURN
 
       4 macros
 
- AS V1.42 Beta [Bld 102] - source file game.asm - page 17 - 6/30/2016 22:27:01
+ AS V1.42 Beta [Bld 102] - source file game.asm - page 17 - 7/1/2016 7:55:58
 
 
   codepages:
@@ -914,7 +914,7 @@ RECALL                                | RETURN
 STANDARD (0 changed characters)
 
 
-0.02 seconds assembly time
+0.01 seconds assembly time
 
     635 lines source file
     796 lines incl. macro expansions

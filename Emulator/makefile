@@ -1,5 +1,5 @@
 #OBJS specifies which files to compile as part of the project
-OBJS = framework\main.cpp framework\gfx.cpp framework\debugger.cpp sys_processor.cpp sys_debug_elf.cpp hardware.cpp
+OBJS = framework\main.cpp framework\gfx.cpp framework\debugger.cpp sys_processor.cpp sys_debug_vip.cpp hardware.cpp
 #CC specifies which compiler we're using
 CC = g++
 
@@ -18,7 +18,7 @@ COMPILER_FLAGS = -Wall -DINCLUDE_DEBUGGING_SUPPORT -DWINDOWS
 LINKER_FLAGS = -lmingw32 -lSDL2main -lSDL2
 
 #OBJ_NAME specifies the name of our exectuable
-OBJ_NAME = elf
+OBJ_NAME = vip
 
 #This is the target that compiles our executable
 all : $(OBJS)

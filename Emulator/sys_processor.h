@@ -13,7 +13,6 @@
 #define _PROCESSOR_H
 
 #define MEMORYSIZE	(4096) 															// RAM allocated.
-#define MEMORYMASK	(MEMORYSIZE-1)													// Address mask.
 
 #define DEFAULT_BUS_VALUE (0)														// Default bus values I/O
 
