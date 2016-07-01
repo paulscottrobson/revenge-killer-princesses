@@ -85,6 +85,11 @@ code:
 	org 	code+100h
 	include door.asm 															; door "opening" code. ($3C)
 	include player.asm 															; player reset and depth view ()
+
+
+	org  	stack-240h 															; put gfx data at the end.	
+SpriteData:	
+	include graphics.inc
 ;
 ;	TODO: 	
 ;			Put princesses in the maze.
