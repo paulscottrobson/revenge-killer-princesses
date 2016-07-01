@@ -7,6 +7,8 @@
 ; ************************************************************************************************************
 
 Return:
+	ldxa 																		; restore DF
+	shl 
 	ldxa 																		; restore D
 	ret 																		; restore X,P
 Interrupt:
@@ -38,4 +40,20 @@ Refresh:
 	plo 	r0
 
 	bn1 	Refresh 															; in emulator we never loop back
+
+	dec 	r2 																	; save DF.
+	shrc 	
+	str 	r2
+
+	lri 	r0,timers 															; point R0 to the timers.
+__IRQTimerLoop:
+	lda 	r0 																	; read timer value and advance
+	bz 		__IRQNextTimer	 													; if zero do next ?
+	dec 	r0 																	; if not, decrement the counter.
+	smi 	1
+	str 	r0
+	inc 	r0
+__IRQNextTimer:
+	glo 	r0 																	; do all the tiners
+	bnz 	__IRQTimerLoop
 	br 		Return

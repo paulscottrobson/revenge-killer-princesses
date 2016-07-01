@@ -18,9 +18,10 @@ buffer = 	0E00h																; this page has the buffer in it
 map = 		0D00h 																; this page has the map in it.
 stack = 	0CF0h 																; stack top
 
-ppvector =  0CF9h																; player position vector.
-player = 	0CF8h 																; player offset in map
-direction = 0CF7h 																; 0 = right,1 = down, 2 = left, 3 = up
+timers = 	0CFCh 																; 4 timers must end at page top.
+ppvector =  0CF4h																; player position vector.
+player = 	0CF3h 																; player offset in map
+direction = 0CF2h 																; 0 = right,1 = down, 2 = left, 3 = up
 
 	ret 																		; 1802 interrupts on. 
 	nop
@@ -56,7 +57,10 @@ Loop:
 	ani 	3
 	str 	r4
 	inc 	r8
-	br 		Loop
+
+	call 	r4,ScanKeyboard
+	xri 	0Fh
+	bnz 	Loop
 
 wait:
 	br 		wait
@@ -67,7 +71,6 @@ code:
 ;
 ;	Block 0
 ;
-	include interrupt.asm														; screen driver ($1E)
 	include maze.asm 															; maze creator & RNG ($7B)
 	include drawing.asm 														; repaint outline/mirror ($64)
 ;
@@ -82,10 +85,16 @@ code:
 	org	 	code+200h
 	include repaint.asm 														; repaint ($8B)
 	include sprites.asm 														; sprite drawing ($30)
+	include interrupt.asm														; screen driver ($1E)
+;
+; 	Block 3 
+;
+	org 	code+300h
 
-	org  	stack-240h 															; put gfx data at the end.	
+	org  	0A80h 																; put gfx data at the end.	
+	include keyboard.asm  														; keyboard driver here so can port.
 SpriteData:	
-	include graphics.inc 														
+	include graphics.inc 														; all the graphic data
 
 ;	TODO: 	
 ; 			Player Movement

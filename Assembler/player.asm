@@ -15,6 +15,13 @@ ResetPlayer:
 	ldi 	2 																	; direction 2 
 	stxd
 
+	ldi 	0FFh 																; point to top of timers
+	plo 	rf
+	ldi 	0h 																	; clear the four timers
+	stxd
+	stxd
+	stxd
+	stxd
 	return
 
 ; ************************************************************************************************************
