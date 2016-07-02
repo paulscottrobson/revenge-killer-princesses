@@ -236,82 +236,6 @@ __graphic03:
     db 01fh
     db 000h
     db 0ffh
-;        ...X XX 
-;        ...X    
-;        ...X XXX
-;        ....X XX
-;        ...X    
-;        ..X XX  
-;        ..X XXX 
-;        ..X  XXX
-;        ...X XXX
-;        ...X XXX
-;        ...X XXX
-;        ...X XXX
-;        ....X   
-;        .....XXX
-__graphic04:
-    db 053h
-    db 0e0h
-    db 009h
-    db 0e0h
-    db 00fh
-    db 0e0h
-    db 008h
-    db 0f0h
-    db 004h
-    db 0e0h
-    db 00fh
-    db 0c0h
-    db 013h
-    db 0c0h
-    db 011h
-    db 0c0h
-    db 018h
-    db 0e0h
-    db 008h
-    db 0e0h
-    db 008h
-    db 0e0h
-    db 008h
-    db 0e0h
-    db 008h
-    db 0f0h
-    db 007h
-    db 0f8h
-    db 000h
-    db 0ffh
-__graphic05:
-    db 054h
-    db 007h
-    db 090h
-    db 007h
-    db 0f0h
-    db 007h
-    db 010h
-    db 00fh
-    db 020h
-    db 007h
-    db 0f0h
-    db 003h
-    db 0c8h
-    db 003h
-    db 088h
-    db 003h
-    db 018h
-    db 007h
-    db 010h
-    db 007h
-    db 010h
-    db 007h
-    db 010h
-    db 007h
-    db 010h
-    db 00fh
-    db 0e0h
-    db 01fh
-    db 000h
-    db 0ffh
 ;        ....X X 
 ;        ....X   
 ;        ....X XX
@@ -322,8 +246,8 @@ __graphic05:
 ;        ....X XX
 ;        .....X  
 ;        ......XX
-__graphic06:
-    db 053h
+__graphic04:
+    db 063h
     db 0f0h
     db 005h
     db 0f0h
@@ -345,8 +269,8 @@ __graphic06:
     db 0fch
     db 000h
     db 0ffh
-__graphic07:
-    db 054h
+__graphic05:
+    db 064h
     db 00fh
     db 0a0h
     db 00fh
@@ -361,6 +285,47 @@ __graphic07:
     db 0a0h
     db 00fh
     db 020h
+    db 00fh
+    db 020h
+    db 01fh
+    db 0c0h
+    db 03fh
+    db 000h
+    db 0ffh
+;        ....X X 
+;        ....X   
+;        .....X X
+;        ....X X 
+;        ....X XX
+;        .....X  
+;        ......XX
+__graphic06:
+    db 063h
+    db 0f0h
+    db 005h
+    db 0f0h
+    db 007h
+    db 0f8h
+    db 002h
+    db 0f0h
+    db 005h
+    db 0f0h
+    db 004h
+    db 0f8h
+    db 003h
+    db 0fch
+    db 000h
+    db 0ffh
+__graphic07:
+    db 064h
+    db 00fh
+    db 0a0h
+    db 00fh
+    db 0e0h
+    db 01fh
+    db 040h
+    db 00fh
+    db 0a0h
     db 00fh
     db 020h
     db 01fh
@@ -532,4 +497,4 @@ __graphic15:
     db 07fh
     db 000h
     db 0ffh
-; 408
+; 380

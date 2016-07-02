@@ -1,4 +1,4 @@
- AS V1.42 Beta [Bld 102] - source file game.asm - page 1 - 7/2/2016 15:13:14
+ AS V1.42 Beta [Bld 102] - source file game.asm - page 1 - 7/2/2016 15:20:01
 
 
        1/       0 :                     ; ************************************************************************************************************
@@ -61,7 +61,7 @@
 (1)   43/       0 :                     	dec 	r2
 (1)   44/       0 :                     	endm
 (1)   45/       0 :                     
- AS V1.42 Beta [Bld 102] - source file game.asm(1802.inc) - page 2 - 7/2/2016 15:13:14
+ AS V1.42 Beta [Bld 102] - source file game.asm(1802.inc) - page 2 - 7/2/2016 15:20:01
 
 
 (1)   46/       0 :                     return Macro 																	; return from routine
@@ -124,7 +124,7 @@
       51/      1A : 79                          mark
       51/      1B : D4                          sep     R4
       51/      1C : 22                          dec     r2
- AS V1.42 Beta [Bld 102] - source file game.asm - page 3 - 7/2/2016 15:13:14
+ AS V1.42 Beta [Bld 102] - source file game.asm - page 3 - 7/2/2016 15:20:01
 
 
       52/      1D : (MACRO)             	call 	r4,ResetPlayer 														; reset the player
@@ -187,7 +187,7 @@
 (1)    9/     100 :                     
 (1)   10/     100 : =80H                MAZE_Wall = 080h
 (1)   11/     100 : =0H                 MAZE_Open = 000h
- AS V1.42 Beta [Bld 102] - source file game.asm(maze.asm) - page 4 - 7/2/2016 15:13:14
+ AS V1.42 Beta [Bld 102] - source file game.asm(maze.asm) - page 4 - 7/2/2016 15:20:01
 
 
 (1)   12/     100 : =1H                 MAZE_Princess = 001h
@@ -250,7 +250,7 @@
 (1)   51/     140 : 33 4B               	bdf 	__CMNotDown
 (1)   52/     142 : 9C                  	ghi 	rc 																	; open square down - point RD to it
 (1)   53/     143 : BD                  	phi 	rd
- AS V1.42 Beta [Bld 102] - source file game.asm(maze.asm) - page 5 - 7/2/2016 15:13:14
+ AS V1.42 Beta [Bld 102] - source file game.asm(maze.asm) - page 5 - 7/2/2016 15:20:01
 
 
 (1)   54/     144 : 8C                  	glo 	rc
@@ -313,7 +313,7 @@
 (1)  103/     175 : E2                          sex     r2
 (1)  103/     176 : 12                          inc     r2
 (1)  103/     177 : 70                          ret
- AS V1.42 Beta [Bld 102] - source file game.asm(maze.asm) - page 6 - 7/2/2016 15:13:14
+ AS V1.42 Beta [Bld 102] - source file game.asm(maze.asm) - page 6 - 7/2/2016 15:20:01
 
 
 (1)  104/     178 : 30 54               	br 		RandomNumber 														; is re-entrant.
@@ -376,7 +376,7 @@
 (1)   55/     19C : 2D                  	dec 	rd
 (1)   56/     19D :                     
 (1)   57/     19D :                     _RDDrawByteBlocks:
- AS V1.42 Beta [Bld 102] - source file game.asm(drawing.asm) - page 7 - 7/2/2016 15:13:14
+ AS V1.42 Beta [Bld 102] - source file game.asm(drawing.asm) - page 7 - 7/2/2016 15:20:01
 
 
 (1)   58/     19D : F8 FF               	ldi 	0FFh 																; write solid block on left.
@@ -439,7 +439,7 @@
 (1)  112/     1C9 : (MACRO)             	lri 	re,Buffer 															; re points to screen top
 (1)  112/     1C9 : F8 0E                       ldi     (BUFFER)/256
 (1)  112/     1CB : BE                          phi     RE
- AS V1.42 Beta [Bld 102] - source file game.asm(drawing.asm) - page 8 - 7/2/2016 15:13:14
+ AS V1.42 Beta [Bld 102] - source file game.asm(drawing.asm) - page 8 - 7/2/2016 15:20:01
 
 
 (1)  112/     1CC : F8 00                       ldi     (BUFFER)&255
@@ -502,7 +502,7 @@
 (1)   32/     21A :                     
 (1)   33/     21A : E2                  	sex 	r2 																	; X points to stack.
 (1)   34/     21B : 8E                  	glo 	re 																	; get door position
- AS V1.42 Beta [Bld 102] - source file game.asm(door.asm) - page 9 - 7/2/2016 15:13:14
+ AS V1.42 Beta [Bld 102] - source file game.asm(door.asm) - page 9 - 7/2/2016 15:20:01
 
 
 (1)   35/     21C : FA 04               	ani 	4 																	; 0 if left 4 if right
@@ -565,7 +565,7 @@
 (1)   23/     254 : 73                  	stxd
 (1)   24/     255 : 73                  	stxd
 (1)   25/     256 : 73                  	stxd
- AS V1.42 Beta [Bld 102] - source file game.asm(player.asm) - page 10 - 7/2/2016 15:13:14
+ AS V1.42 Beta [Bld 102] - source file game.asm(player.asm) - page 10 - 7/2/2016 15:20:01
 
 
 (1)   26/     257 : 73                  	stxd
@@ -628,7 +628,7 @@
 (1)   69/     282 :                     ;	Uses RA,RB,RD GetPlayerNextOffset (RE/RF) and DoorOpen(RE/RF). 
 (1)   70/     282 :                     ; ************************************************************************************************************
 (1)   71/     282 :                     ; ************************************************************************************************************
- AS V1.42 Beta [Bld 102] - source file game.asm(player.asm) - page 11 - 7/2/2016 15:13:14
+ AS V1.42 Beta [Bld 102] - source file game.asm(player.asm) - page 11 - 7/2/2016 15:20:01
 
 
 (1)   72/     282 :                     
@@ -691,7 +691,7 @@
 (1)  105/     2B8 : 33 C0               	bdf 	__DPVNoRightWall
 (1)  106/     2BA : 9A                  	ghi 	ra 																	; open 7-depth up.
 (1)  107/     2BB : FB 07               	xri 	7
- AS V1.42 Beta [Bld 102] - source file game.asm(player.asm) - page 12 - 7/2/2016 15:13:14
+ AS V1.42 Beta [Bld 102] - source file game.asm(player.asm) - page 12 - 7/2/2016 15:20:01
 
 
 (1)  108/     2BD : (MACRO)             	recall 	rd
@@ -754,7 +754,7 @@
 (1)  159/     2F7 : 01 10 FF F0         	db 		1,16,-1,-16 														; direction -> offset table.
 (1)  160/     2FB :                     
       77/     2FB :                     ;
- AS V1.42 Beta [Bld 102] - source file game.asm - page 13 - 7/2/2016 15:13:14
+ AS V1.42 Beta [Bld 102] - source file game.asm - page 13 - 7/2/2016 15:20:01
 
 
       78/     2FB :                     ;	Block 2
@@ -817,7 +817,7 @@
 (1)   28/     32E : F8 03               	ldi 	3
 (1)   29/     330 : (MACRO)             	recall 	r5
 (1)   29/     330 : 79                          mark
- AS V1.42 Beta [Bld 102] - source file game.asm(repaint.asm) - page 14 - 7/2/2016 15:13:14
+ AS V1.42 Beta [Bld 102] - source file game.asm(repaint.asm) - page 14 - 7/2/2016 15:20:01
 
 
 (1)   29/     331 : D5                          sep     R5
@@ -880,7 +880,7 @@
 (1)   63/     36B : DD                          sep     RD
 (1)   63/     36C : 22                          dec     r2
 (1)   64/     36D :                     
- AS V1.42 Beta [Bld 102] - source file game.asm(repaint.asm) - page 15 - 7/2/2016 15:13:14
+ AS V1.42 Beta [Bld 102] - source file game.asm(repaint.asm) - page 15 - 7/2/2016 15:20:01
 
 
 (1)   65/     36D :                     __RPStatus:
@@ -943,7 +943,7 @@
 (1)   21/     399 : 4F                  	lda 	rf
 (1)   22/     39A : AE                  	plo 	re 
 (1)   23/     39B :                     
- AS V1.42 Beta [Bld 102] - source file game.asm(sprites.asm) - page 16 - 7/2/2016 15:13:14
+ AS V1.42 Beta [Bld 102] - source file game.asm(sprites.asm) - page 16 - 7/2/2016 15:20:01
 
 
 (1)   24/     39B : 4E                  	lda 	re 																	; read the start drawing address
@@ -1006,7 +1006,7 @@
 (1)   26/     3CB :                     Refresh:
 (1)   27/     3CB : 80                  	glo 	r0 																	; do four scan lines for each row
 (1)   28/     3CC : E2                  	sex 	r2
- AS V1.42 Beta [Bld 102] - source file game.asm(interrupt.asm) - page 17 - 7/2/2016 15:13:14
+ AS V1.42 Beta [Bld 102] - source file game.asm(interrupt.asm) - page 17 - 7/2/2016 15:20:01
 
 
 (1)   29/     3CD :                     
@@ -1069,7 +1069,7 @@
 (1)   14/     403 : F8 FC                       ldi     (MOVETIMER)&255
 (1)   14/     405 : AD                          plo     RD
 (1)   15/     406 : (MACRO)             	lri 	rc,direction 														; point RC to direction.
- AS V1.42 Beta [Bld 102] - source file game.asm(move.asm) - page 18 - 7/2/2016 15:13:14
+ AS V1.42 Beta [Bld 102] - source file game.asm(move.asm) - page 18 - 7/2/2016 15:20:01
 
 
 (1)   15/     406 : F8 0C                       ldi     (DIRECTION)/256
@@ -1132,7 +1132,7 @@
 (1)   56/     44A :                     
 (1)   57/     44A :                     __MPTimer1: 																
 (1)   58/     44A : 1D                  	inc 	rd 																	; point to 2nd timer, fire timer
- AS V1.42 Beta [Bld 102] - source file game.asm(move.asm) - page 19 - 7/2/2016 15:13:14
+ AS V1.42 Beta [Bld 102] - source file game.asm(move.asm) - page 19 - 7/2/2016 15:20:01
 
 
 (1)   59/     44B : 0D                  	ldn 	rd  																; if that is non zero can't fire.
@@ -1195,7 +1195,7 @@
 (1)  105/     48A :                     ;
 (1)  106/     48A :                     ;	Kill princess and bump score
 (1)  107/     48A :                     ;
- AS V1.42 Beta [Bld 102] - source file game.asm(move.asm) - page 20 - 7/2/2016 15:13:14
+ AS V1.42 Beta [Bld 102] - source file game.asm(move.asm) - page 20 - 7/2/2016 15:20:01
 
 
 (1)  108/     48A :                     __MPKill:
@@ -1258,7 +1258,7 @@
 (1)   33/     A92 : 12                          inc     r2
 (1)   33/     A93 : 70                          ret
 (1)   34/     A94 :                     
- AS V1.42 Beta [Bld 102] - source file game.asm(keyboard.asm) - page 21 - 7/2/2016 15:13:14
+ AS V1.42 Beta [Bld 102] - source file game.asm(keyboard.asm) - page 21 - 7/2/2016 15:20:01
 
 
 (1)   35/     A94 :                     
@@ -1269,17 +1269,17 @@
 (1)    3/     A98 : 0B 18                   dw __graphic02
 (1)    4/     A9A : 0B 3E                   dw __graphic03
 (1)    5/     A9C : 0B 64                   dw __graphic04
-(1)    6/     A9E : 0B 82                   dw __graphic05
-(1)    7/     AA0 : 0B A0                   dw __graphic06
-(1)    8/     AA2 : 0B B6                   dw __graphic07
-(1)    9/     AA4 : 0B CC                   dw __graphic08
-(1)   10/     AA6 : 0B E2                   dw __graphic09
-(1)   11/     AA8 : 0B F8                   dw __graphic10
-(1)   12/     AAA : 0C 0A                   dw __graphic11
-(1)   13/     AAC : 0C 1C                   dw __graphic12
-(1)   14/     AAE : 0C 2A                   dw __graphic13
-(1)   15/     AB0 : 0C 38                   dw __graphic14
-(1)   16/     AB2 : 0C 42                   dw __graphic15
+(1)    6/     A9E : 0B 7A                   dw __graphic05
+(1)    7/     AA0 : 0B 90                   dw __graphic06
+(1)    8/     AA2 : 0B A0                   dw __graphic07
+(1)    9/     AA4 : 0B B0                   dw __graphic08
+(1)   10/     AA6 : 0B C6                   dw __graphic09
+(1)   11/     AA8 : 0B DC                   dw __graphic10
+(1)   12/     AAA : 0B EE                   dw __graphic11
+(1)   13/     AAC : 0C 00                   dw __graphic12
+(1)   14/     AAE : 0C 0E                   dw __graphic13
+(1)   15/     AB0 : 0C 1C                   dw __graphic14
+(1)   16/     AB2 : 0C 26                   dw __graphic15
 (1)   17/     AB4 :                     ;        ..X XXX 
 (1)   18/     AB4 :                     ;        .. X X  
 (1)   19/     AB4 :                     ;        ..X XXX 
@@ -1321,7 +1321,7 @@
 (1)   55/     AC1 : E0                      db 0e0h
 (1)   56/     AC2 : 08                      db 008h
 (1)   57/     AC3 : E0                      db 0e0h
- AS V1.42 Beta [Bld 102] - source file game.asm(graphics.inc) - page 22 - 7/2/2016 15:13:14
+ AS V1.42 Beta [Bld 102] - source file game.asm(graphics.inc) - page 22 - 7/2/2016 15:20:01
 
 
 (1)   58/     AC4 : 07                      db 007h
@@ -1384,7 +1384,7 @@
 (1)  115/     AFC : F2                      db 0f2h
 (1)  116/     AFD : 00                      db 000h
 (1)  117/     AFE : E2                      db 0e2h
- AS V1.42 Beta [Bld 102] - source file game.asm(graphics.inc) - page 23 - 7/2/2016 15:13:14
+ AS V1.42 Beta [Bld 102] - source file game.asm(graphics.inc) - page 23 - 7/2/2016 15:20:01
 
 
 (1)  118/     AFF : 00                      db 000h
@@ -1447,7 +1447,7 @@
 (1)  175/     B25 : C0                      db 0c0h
 (1)  176/     B26 : 0F                      db 00fh
 (1)  177/     B27 : C0                      db 0c0h
- AS V1.42 Beta [Bld 102] - source file game.asm(graphics.inc) - page 24 - 7/2/2016 15:13:14
+ AS V1.42 Beta [Bld 102] - source file game.asm(graphics.inc) - page 24 - 7/2/2016 15:20:01
 
 
 (1)  178/     B28 : 17                      db 017h
@@ -1510,334 +1510,292 @@
 (1)  235/     B60 : E0                      db 0e0h
 (1)  236/     B61 : 1F                      db 01fh
 (1)  237/     B62 : 00                      db 000h
- AS V1.42 Beta [Bld 102] - source file game.asm(graphics.inc) - page 25 - 7/2/2016 15:13:14
+ AS V1.42 Beta [Bld 102] - source file game.asm(graphics.inc) - page 25 - 7/2/2016 15:20:01
 
 
 (1)  238/     B63 : FF                      db 0ffh
-(1)  239/     B64 :                     ;        ...X XX 
-(1)  240/     B64 :                     ;        ...X    
-(1)  241/     B64 :                     ;        ...X XXX
-(1)  242/     B64 :                     ;        ....X XX
-(1)  243/     B64 :                     ;        ...X    
-(1)  244/     B64 :                     ;        ..X XX  
-(1)  245/     B64 :                     ;        ..X XXX 
-(1)  246/     B64 :                     ;        ..X  XXX
-(1)  247/     B64 :                     ;        ...X XXX
-(1)  248/     B64 :                     ;        ...X XXX
-(1)  249/     B64 :                     ;        ...X XXX
-(1)  250/     B64 :                     ;        ...X XXX
-(1)  251/     B64 :                     ;        ....X   
-(1)  252/     B64 :                     ;        .....XXX
-(1)  253/     B64 :                     __graphic04:
-(1)  254/     B64 : 53                      db 053h
-(1)  255/     B65 : E0                      db 0e0h
-(1)  256/     B66 : 09                      db 009h
-(1)  257/     B67 : E0                      db 0e0h
-(1)  258/     B68 : 0F                      db 00fh
-(1)  259/     B69 : E0                      db 0e0h
-(1)  260/     B6A : 08                      db 008h
-(1)  261/     B6B : F0                      db 0f0h
-(1)  262/     B6C : 04                      db 004h
-(1)  263/     B6D : E0                      db 0e0h
-(1)  264/     B6E : 0F                      db 00fh
-(1)  265/     B6F : C0                      db 0c0h
-(1)  266/     B70 : 13                      db 013h
-(1)  267/     B71 : C0                      db 0c0h
-(1)  268/     B72 : 11                      db 011h
-(1)  269/     B73 : C0                      db 0c0h
-(1)  270/     B74 : 18                      db 018h
-(1)  271/     B75 : E0                      db 0e0h
-(1)  272/     B76 : 08                      db 008h
-(1)  273/     B77 : E0                      db 0e0h
-(1)  274/     B78 : 08                      db 008h
-(1)  275/     B79 : E0                      db 0e0h
-(1)  276/     B7A : 08                      db 008h
-(1)  277/     B7B : E0                      db 0e0h
-(1)  278/     B7C : 08                      db 008h
-(1)  279/     B7D : F0                      db 0f0h
-(1)  280/     B7E : 07                      db 007h
-(1)  281/     B7F : F8                      db 0f8h
-(1)  282/     B80 : 00                      db 000h
-(1)  283/     B81 : FF                      db 0ffh
-(1)  284/     B82 :                     __graphic05:
-(1)  285/     B82 : 54                      db 054h
-(1)  286/     B83 : 07                      db 007h
-(1)  287/     B84 : 90                      db 090h
-(1)  288/     B85 : 07                      db 007h
-(1)  289/     B86 : F0                      db 0f0h
-(1)  290/     B87 : 07                      db 007h
-(1)  291/     B88 : 10                      db 010h
-(1)  292/     B89 : 0F                      db 00fh
-(1)  293/     B8A : 20                      db 020h
-(1)  294/     B8B : 07                      db 007h
-(1)  295/     B8C : F0                      db 0f0h
-(1)  296/     B8D : 03                      db 003h
-(1)  297/     B8E : C8                      db 0c8h
- AS V1.42 Beta [Bld 102] - source file game.asm(graphics.inc) - page 26 - 7/2/2016 15:13:14
+(1)  239/     B64 :                     ;        ....X X 
+(1)  240/     B64 :                     ;        ....X   
+(1)  241/     B64 :                     ;        ....X XX
+(1)  242/     B64 :                     ;        .....X X
+(1)  243/     B64 :                     ;        .....X  
+(1)  244/     B64 :                     ;        ....X X 
+(1)  245/     B64 :                     ;        ....X XX
+(1)  246/     B64 :                     ;        ....X XX
+(1)  247/     B64 :                     ;        .....X  
+(1)  248/     B64 :                     ;        ......XX
+(1)  249/     B64 :                     __graphic04:
+(1)  250/     B64 : 63                      db 063h
+(1)  251/     B65 : F0                      db 0f0h
+(1)  252/     B66 : 05                      db 005h
+(1)  253/     B67 : F0                      db 0f0h
+(1)  254/     B68 : 07                      db 007h
+(1)  255/     B69 : F0                      db 0f0h
+(1)  256/     B6A : 04                      db 004h
+(1)  257/     B6B : F8                      db 0f8h
+(1)  258/     B6C : 02                      db 002h
+(1)  259/     B6D : F8                      db 0f8h
+(1)  260/     B6E : 03                      db 003h
+(1)  261/     B6F : F0                      db 0f0h
+(1)  262/     B70 : 05                      db 005h
+(1)  263/     B71 : F0                      db 0f0h
+(1)  264/     B72 : 04                      db 004h
+(1)  265/     B73 : F0                      db 0f0h
+(1)  266/     B74 : 04                      db 004h
+(1)  267/     B75 : F8                      db 0f8h
+(1)  268/     B76 : 03                      db 003h
+(1)  269/     B77 : FC                      db 0fch
+(1)  270/     B78 : 00                      db 000h
+(1)  271/     B79 : FF                      db 0ffh
+(1)  272/     B7A :                     __graphic05:
+(1)  273/     B7A : 64                      db 064h
+(1)  274/     B7B : 0F                      db 00fh
+(1)  275/     B7C : A0                      db 0a0h
+(1)  276/     B7D : 0F                      db 00fh
+(1)  277/     B7E : E0                      db 0e0h
+(1)  278/     B7F : 0F                      db 00fh
+(1)  279/     B80 : 20                      db 020h
+(1)  280/     B81 : 1F                      db 01fh
+(1)  281/     B82 : 40                      db 040h
+(1)  282/     B83 : 1F                      db 01fh
+(1)  283/     B84 : C0                      db 0c0h
+(1)  284/     B85 : 0F                      db 00fh
+(1)  285/     B86 : A0                      db 0a0h
+(1)  286/     B87 : 0F                      db 00fh
+(1)  287/     B88 : 20                      db 020h
+(1)  288/     B89 : 0F                      db 00fh
+(1)  289/     B8A : 20                      db 020h
+(1)  290/     B8B : 1F                      db 01fh
+(1)  291/     B8C : C0                      db 0c0h
+(1)  292/     B8D : 3F                      db 03fh
+(1)  293/     B8E : 00                      db 000h
+(1)  294/     B8F : FF                      db 0ffh
+(1)  295/     B90 :                     ;        ....X X 
+(1)  296/     B90 :                     ;        ....X   
+(1)  297/     B90 :                     ;        .....X X
+ AS V1.42 Beta [Bld 102] - source file game.asm(graphics.inc) - page 26 - 7/2/2016 15:20:01
 
 
-(1)  298/     B8F : 03                      db 003h
-(1)  299/     B90 : 88                      db 088h
-(1)  300/     B91 : 03                      db 003h
-(1)  301/     B92 : 18                      db 018h
-(1)  302/     B93 : 07                      db 007h
-(1)  303/     B94 : 10                      db 010h
-(1)  304/     B95 : 07                      db 007h
-(1)  305/     B96 : 10                      db 010h
-(1)  306/     B97 : 07                      db 007h
-(1)  307/     B98 : 10                      db 010h
-(1)  308/     B99 : 07                      db 007h
-(1)  309/     B9A : 10                      db 010h
-(1)  310/     B9B : 0F                      db 00fh
-(1)  311/     B9C : E0                      db 0e0h
-(1)  312/     B9D : 1F                      db 01fh
-(1)  313/     B9E : 00                      db 000h
-(1)  314/     B9F : FF                      db 0ffh
-(1)  315/     BA0 :                     ;        ....X X 
-(1)  316/     BA0 :                     ;        ....X   
-(1)  317/     BA0 :                     ;        ....X XX
-(1)  318/     BA0 :                     ;        .....X X
-(1)  319/     BA0 :                     ;        .....X  
-(1)  320/     BA0 :                     ;        ....X X 
-(1)  321/     BA0 :                     ;        ....X XX
-(1)  322/     BA0 :                     ;        ....X XX
-(1)  323/     BA0 :                     ;        .....X  
-(1)  324/     BA0 :                     ;        ......XX
-(1)  325/     BA0 :                     __graphic06:
-(1)  326/     BA0 : 53                      db 053h
-(1)  327/     BA1 : F0                      db 0f0h
-(1)  328/     BA2 : 05                      db 005h
-(1)  329/     BA3 : F0                      db 0f0h
-(1)  330/     BA4 : 07                      db 007h
-(1)  331/     BA5 : F0                      db 0f0h
-(1)  332/     BA6 : 04                      db 004h
-(1)  333/     BA7 : F8                      db 0f8h
-(1)  334/     BA8 : 02                      db 002h
-(1)  335/     BA9 : F8                      db 0f8h
-(1)  336/     BAA : 03                      db 003h
-(1)  337/     BAB : F0                      db 0f0h
-(1)  338/     BAC : 05                      db 005h
-(1)  339/     BAD : F0                      db 0f0h
-(1)  340/     BAE : 04                      db 004h
-(1)  341/     BAF : F0                      db 0f0h
-(1)  342/     BB0 : 04                      db 004h
-(1)  343/     BB1 : F8                      db 0f8h
-(1)  344/     BB2 : 03                      db 003h
-(1)  345/     BB3 : FC                      db 0fch
-(1)  346/     BB4 : 00                      db 000h
-(1)  347/     BB5 : FF                      db 0ffh
-(1)  348/     BB6 :                     __graphic07:
-(1)  349/     BB6 : 54                      db 054h
-(1)  350/     BB7 : 0F                      db 00fh
-(1)  351/     BB8 : A0                      db 0a0h
-(1)  352/     BB9 : 0F                      db 00fh
-(1)  353/     BBA : E0                      db 0e0h
-(1)  354/     BBB : 0F                      db 00fh
-(1)  355/     BBC : 20                      db 020h
-(1)  356/     BBD : 1F                      db 01fh
-(1)  357/     BBE : 40                      db 040h
- AS V1.42 Beta [Bld 102] - source file game.asm(graphics.inc) - page 27 - 7/2/2016 15:13:14
+(1)  298/     B90 :                     ;        ....X X 
+(1)  299/     B90 :                     ;        ....X XX
+(1)  300/     B90 :                     ;        .....X  
+(1)  301/     B90 :                     ;        ......XX
+(1)  302/     B90 :                     __graphic06:
+(1)  303/     B90 : 63                      db 063h
+(1)  304/     B91 : F0                      db 0f0h
+(1)  305/     B92 : 05                      db 005h
+(1)  306/     B93 : F0                      db 0f0h
+(1)  307/     B94 : 07                      db 007h
+(1)  308/     B95 : F8                      db 0f8h
+(1)  309/     B96 : 02                      db 002h
+(1)  310/     B97 : F0                      db 0f0h
+(1)  311/     B98 : 05                      db 005h
+(1)  312/     B99 : F0                      db 0f0h
+(1)  313/     B9A : 04                      db 004h
+(1)  314/     B9B : F8                      db 0f8h
+(1)  315/     B9C : 03                      db 003h
+(1)  316/     B9D : FC                      db 0fch
+(1)  317/     B9E : 00                      db 000h
+(1)  318/     B9F : FF                      db 0ffh
+(1)  319/     BA0 :                     __graphic07:
+(1)  320/     BA0 : 64                      db 064h
+(1)  321/     BA1 : 0F                      db 00fh
+(1)  322/     BA2 : A0                      db 0a0h
+(1)  323/     BA3 : 0F                      db 00fh
+(1)  324/     BA4 : E0                      db 0e0h
+(1)  325/     BA5 : 1F                      db 01fh
+(1)  326/     BA6 : 40                      db 040h
+(1)  327/     BA7 : 0F                      db 00fh
+(1)  328/     BA8 : A0                      db 0a0h
+(1)  329/     BA9 : 0F                      db 00fh
+(1)  330/     BAA : 20                      db 020h
+(1)  331/     BAB : 1F                      db 01fh
+(1)  332/     BAC : C0                      db 0c0h
+(1)  333/     BAD : 3F                      db 03fh
+(1)  334/     BAE : 00                      db 000h
+(1)  335/     BAF : FF                      db 0ffh
+(1)  336/     BB0 :                     ;        ....XXX.
+(1)  337/     BB0 :                     ;        ...X   X
+(1)  338/     BB0 :                     ;        ..X     
+(1)  339/     BB0 :                     ;        ..X     
+(1)  340/     BB0 :                     ;        ..X     
+(1)  341/     BB0 :                     ;        ...X    
+(1)  342/     BB0 :                     ;        ....X   
+(1)  343/     BB0 :                     ;        .....X  
+(1)  344/     BB0 :                     ;        ......X 
+(1)  345/     BB0 :                     ;        .......X
+(1)  346/     BB0 :                     __graphic08:
+(1)  347/     BB0 : 0E                      db 00eh
+(1)  348/     BB1 : F1                      db 0f1h
+(1)  349/     BB2 : 00                      db 000h
+(1)  350/     BB3 : E0                      db 0e0h
+(1)  351/     BB4 : 0E                      db 00eh
+(1)  352/     BB5 : C0                      db 0c0h
+(1)  353/     BB6 : 1F                      db 01fh
+(1)  354/     BB7 : C0                      db 0c0h
+(1)  355/     BB8 : 1F                      db 01fh
+(1)  356/     BB9 : C0                      db 0c0h
+(1)  357/     BBA : 1F                      db 01fh
+ AS V1.42 Beta [Bld 102] - source file game.asm(graphics.inc) - page 27 - 7/2/2016 15:20:01
 
 
-(1)  358/     BBF : 1F                      db 01fh
-(1)  359/     BC0 : C0                      db 0c0h
-(1)  360/     BC1 : 0F                      db 00fh
-(1)  361/     BC2 : A0                      db 0a0h
-(1)  362/     BC3 : 0F                      db 00fh
-(1)  363/     BC4 : 20                      db 020h
-(1)  364/     BC5 : 0F                      db 00fh
-(1)  365/     BC6 : 20                      db 020h
-(1)  366/     BC7 : 1F                      db 01fh
-(1)  367/     BC8 : C0                      db 0c0h
-(1)  368/     BC9 : 3F                      db 03fh
-(1)  369/     BCA : 00                      db 000h
-(1)  370/     BCB : FF                      db 0ffh
-(1)  371/     BCC :                     ;        ....XXX.
-(1)  372/     BCC :                     ;        ...X   X
-(1)  373/     BCC :                     ;        ..X     
-(1)  374/     BCC :                     ;        ..X     
-(1)  375/     BCC :                     ;        ..X     
-(1)  376/     BCC :                     ;        ...X    
-(1)  377/     BCC :                     ;        ....X   
-(1)  378/     BCC :                     ;        .....X  
-(1)  379/     BCC :                     ;        ......X 
-(1)  380/     BCC :                     ;        .......X
-(1)  381/     BCC :                     __graphic08:
-(1)  382/     BCC : 0E                      db 00eh
-(1)  383/     BCD : F1                      db 0f1h
-(1)  384/     BCE : 00                      db 000h
-(1)  385/     BCF : E0                      db 0e0h
-(1)  386/     BD0 : 0E                      db 00eh
-(1)  387/     BD1 : C0                      db 0c0h
-(1)  388/     BD2 : 1F                      db 01fh
-(1)  389/     BD3 : C0                      db 0c0h
-(1)  390/     BD4 : 1F                      db 01fh
-(1)  391/     BD5 : C0                      db 0c0h
-(1)  392/     BD6 : 1F                      db 01fh
-(1)  393/     BD7 : E0                      db 0e0h
-(1)  394/     BD8 : 0F                      db 00fh
-(1)  395/     BD9 : F0                      db 0f0h
-(1)  396/     BDA : 07                      db 007h
-(1)  397/     BDB : F8                      db 0f8h
-(1)  398/     BDC : 03                      db 003h
-(1)  399/     BDD : FC                      db 0fch
-(1)  400/     BDE : 01                      db 001h
-(1)  401/     BDF : FE                      db 0feh
-(1)  402/     BE0 : 00                      db 000h
-(1)  403/     BE1 : FF                      db 0ffh
-(1)  404/     BE2 :                     __graphic09:
-(1)  405/     BE2 : 0F                      db 00fh
-(1)  406/     BE3 : 8F                      db 08fh
-(1)  407/     BE4 : 00                      db 000h
-(1)  408/     BE5 : 07                      db 007h
-(1)  409/     BE6 : 70                      db 070h
-(1)  410/     BE7 : 03                      db 003h
-(1)  411/     BE8 : F8                      db 0f8h
-(1)  412/     BE9 : 03                      db 003h
-(1)  413/     BEA : F8                      db 0f8h
-(1)  414/     BEB : 03                      db 003h
-(1)  415/     BEC : F8                      db 0f8h
-(1)  416/     BED : 07                      db 007h
-(1)  417/     BEE : F0                      db 0f0h
- AS V1.42 Beta [Bld 102] - source file game.asm(graphics.inc) - page 28 - 7/2/2016 15:13:14
+(1)  358/     BBB : E0                      db 0e0h
+(1)  359/     BBC : 0F                      db 00fh
+(1)  360/     BBD : F0                      db 0f0h
+(1)  361/     BBE : 07                      db 007h
+(1)  362/     BBF : F8                      db 0f8h
+(1)  363/     BC0 : 03                      db 003h
+(1)  364/     BC1 : FC                      db 0fch
+(1)  365/     BC2 : 01                      db 001h
+(1)  366/     BC3 : FE                      db 0feh
+(1)  367/     BC4 : 00                      db 000h
+(1)  368/     BC5 : FF                      db 0ffh
+(1)  369/     BC6 :                     __graphic09:
+(1)  370/     BC6 : 0F                      db 00fh
+(1)  371/     BC7 : 8F                      db 08fh
+(1)  372/     BC8 : 00                      db 000h
+(1)  373/     BC9 : 07                      db 007h
+(1)  374/     BCA : 70                      db 070h
+(1)  375/     BCB : 03                      db 003h
+(1)  376/     BCC : F8                      db 0f8h
+(1)  377/     BCD : 03                      db 003h
+(1)  378/     BCE : F8                      db 0f8h
+(1)  379/     BCF : 03                      db 003h
+(1)  380/     BD0 : F8                      db 0f8h
+(1)  381/     BD1 : 07                      db 007h
+(1)  382/     BD2 : F0                      db 0f0h
+(1)  383/     BD3 : 0F                      db 00fh
+(1)  384/     BD4 : E0                      db 0e0h
+(1)  385/     BD5 : 1F                      db 01fh
+(1)  386/     BD6 : C0                      db 0c0h
+(1)  387/     BD7 : 3F                      db 03fh
+(1)  388/     BD8 : 80                      db 080h
+(1)  389/     BD9 : 7F                      db 07fh
+(1)  390/     BDA : 00                      db 000h
+(1)  391/     BDB : FF                      db 0ffh
+(1)  392/     BDC :                     ;        .....XX.
+(1)  393/     BDC :                     ;        ....X  X
+(1)  394/     BDC :                     ;        ...X    
+(1)  395/     BDC :                     ;        ...X    
+(1)  396/     BDC :                     ;        ....X   
+(1)  397/     BDC :                     ;        .....X  
+(1)  398/     BDC :                     ;        ......X 
+(1)  399/     BDC :                     ;        .......X
+(1)  400/     BDC :                     __graphic10:
+(1)  401/     BDC : 0E                      db 00eh
+(1)  402/     BDD : F9                      db 0f9h
+(1)  403/     BDE : 00                      db 000h
+(1)  404/     BDF : F0                      db 0f0h
+(1)  405/     BE0 : 06                      db 006h
+(1)  406/     BE1 : E0                      db 0e0h
+(1)  407/     BE2 : 0F                      db 00fh
+(1)  408/     BE3 : E0                      db 0e0h
+(1)  409/     BE4 : 0F                      db 00fh
+(1)  410/     BE5 : F0                      db 0f0h
+(1)  411/     BE6 : 07                      db 007h
+(1)  412/     BE7 : F8                      db 0f8h
+(1)  413/     BE8 : 03                      db 003h
+(1)  414/     BE9 : FC                      db 0fch
+(1)  415/     BEA : 01                      db 001h
+(1)  416/     BEB : FE                      db 0feh
+(1)  417/     BEC : 00                      db 000h
+ AS V1.42 Beta [Bld 102] - source file game.asm(graphics.inc) - page 28 - 7/2/2016 15:20:01
 
 
-(1)  418/     BEF : 0F                      db 00fh
-(1)  419/     BF0 : E0                      db 0e0h
-(1)  420/     BF1 : 1F                      db 01fh
-(1)  421/     BF2 : C0                      db 0c0h
-(1)  422/     BF3 : 3F                      db 03fh
-(1)  423/     BF4 : 80                      db 080h
-(1)  424/     BF5 : 7F                      db 07fh
-(1)  425/     BF6 : 00                      db 000h
-(1)  426/     BF7 : FF                      db 0ffh
-(1)  427/     BF8 :                     ;        .....XX.
-(1)  428/     BF8 :                     ;        ....X  X
-(1)  429/     BF8 :                     ;        ...X    
-(1)  430/     BF8 :                     ;        ...X    
-(1)  431/     BF8 :                     ;        ....X   
-(1)  432/     BF8 :                     ;        .....X  
-(1)  433/     BF8 :                     ;        ......X 
-(1)  434/     BF8 :                     ;        .......X
-(1)  435/     BF8 :                     __graphic10:
-(1)  436/     BF8 : 0E                      db 00eh
-(1)  437/     BF9 : F9                      db 0f9h
-(1)  438/     BFA : 00                      db 000h
-(1)  439/     BFB : F0                      db 0f0h
-(1)  440/     BFC : 06                      db 006h
-(1)  441/     BFD : E0                      db 0e0h
-(1)  442/     BFE : 0F                      db 00fh
-(1)  443/     BFF : E0                      db 0e0h
-(1)  444/     C00 : 0F                      db 00fh
-(1)  445/     C01 : F0                      db 0f0h
-(1)  446/     C02 : 07                      db 007h
-(1)  447/     C03 : F8                      db 0f8h
-(1)  448/     C04 : 03                      db 003h
-(1)  449/     C05 : FC                      db 0fch
-(1)  450/     C06 : 01                      db 001h
-(1)  451/     C07 : FE                      db 0feh
-(1)  452/     C08 : 00                      db 000h
-(1)  453/     C09 : FF                      db 0ffh
-(1)  454/     C0A :                     __graphic11:
-(1)  455/     C0A : 0F                      db 00fh
-(1)  456/     C0B : 9F                      db 09fh
+(1)  418/     BED : FF                      db 0ffh
+(1)  419/     BEE :                     __graphic11:
+(1)  420/     BEE : 0F                      db 00fh
+(1)  421/     BEF : 9F                      db 09fh
+(1)  422/     BF0 : 00                      db 000h
+(1)  423/     BF1 : 0F                      db 00fh
+(1)  424/     BF2 : 60                      db 060h
+(1)  425/     BF3 : 07                      db 007h
+(1)  426/     BF4 : F0                      db 0f0h
+(1)  427/     BF5 : 07                      db 007h
+(1)  428/     BF6 : F0                      db 0f0h
+(1)  429/     BF7 : 0F                      db 00fh
+(1)  430/     BF8 : E0                      db 0e0h
+(1)  431/     BF9 : 1F                      db 01fh
+(1)  432/     BFA : C0                      db 0c0h
+(1)  433/     BFB : 3F                      db 03fh
+(1)  434/     BFC : 80                      db 080h
+(1)  435/     BFD : 7F                      db 07fh
+(1)  436/     BFE : 00                      db 000h
+(1)  437/     BFF : FF                      db 0ffh
+(1)  438/     C00 :                     ;        .....X X
+(1)  439/     C00 :                     ;        ....X   
+(1)  440/     C00 :                     ;        ....X   
+(1)  441/     C00 :                     ;        .....X  
+(1)  442/     C00 :                     ;        ......X 
+(1)  443/     C00 :                     ;        .......X
+(1)  444/     C00 :                     __graphic12:
+(1)  445/     C00 : 0E                      db 00eh
+(1)  446/     C01 : F8                      db 0f8h
+(1)  447/     C02 : 02                      db 002h
+(1)  448/     C03 : F0                      db 0f0h
+(1)  449/     C04 : 07                      db 007h
+(1)  450/     C05 : F0                      db 0f0h
+(1)  451/     C06 : 07                      db 007h
+(1)  452/     C07 : F8                      db 0f8h
+(1)  453/     C08 : 03                      db 003h
+(1)  454/     C09 : FC                      db 0fch
+(1)  455/     C0A : 01                      db 001h
+(1)  456/     C0B : FE                      db 0feh
 (1)  457/     C0C : 00                      db 000h
-(1)  458/     C0D : 0F                      db 00fh
-(1)  459/     C0E : 60                      db 060h
-(1)  460/     C0F : 07                      db 007h
-(1)  461/     C10 : F0                      db 0f0h
-(1)  462/     C11 : 07                      db 007h
-(1)  463/     C12 : F0                      db 0f0h
-(1)  464/     C13 : 0F                      db 00fh
-(1)  465/     C14 : E0                      db 0e0h
-(1)  466/     C15 : 1F                      db 01fh
-(1)  467/     C16 : C0                      db 0c0h
-(1)  468/     C17 : 3F                      db 03fh
-(1)  469/     C18 : 80                      db 080h
-(1)  470/     C19 : 7F                      db 07fh
-(1)  471/     C1A : 00                      db 000h
-(1)  472/     C1B : FF                      db 0ffh
-(1)  473/     C1C :                     ;        .....X X
-(1)  474/     C1C :                     ;        ....X   
-(1)  475/     C1C :                     ;        ....X   
-(1)  476/     C1C :                     ;        .....X  
-(1)  477/     C1C :                     ;        ......X 
- AS V1.42 Beta [Bld 102] - source file game.asm(graphics.inc) - page 29 - 7/2/2016 15:13:14
+(1)  458/     C0D : FF                      db 0ffh
+(1)  459/     C0E :                     __graphic13:
+(1)  460/     C0E : 0F                      db 00fh
+(1)  461/     C0F : 1F                      db 01fh
+(1)  462/     C10 : 40                      db 040h
+(1)  463/     C11 : 0F                      db 00fh
+(1)  464/     C12 : E0                      db 0e0h
+(1)  465/     C13 : 0F                      db 00fh
+(1)  466/     C14 : E0                      db 0e0h
+(1)  467/     C15 : 1F                      db 01fh
+(1)  468/     C16 : C0                      db 0c0h
+(1)  469/     C17 : 3F                      db 03fh
+(1)  470/     C18 : 80                      db 080h
+(1)  471/     C19 : 7F                      db 07fh
+(1)  472/     C1A : 00                      db 000h
+(1)  473/     C1B : FF                      db 0ffh
+(1)  474/     C1C :                     ;        ......X.
+(1)  475/     C1C :                     ;        .....X X
+(1)  476/     C1C :                     ;        ......X 
+(1)  477/     C1C :                     ;        .......X
+ AS V1.42 Beta [Bld 102] - source file game.asm(graphics.inc) - page 29 - 7/2/2016 15:20:01
 
 
-(1)  478/     C1C :                     ;        .......X
-(1)  479/     C1C :                     __graphic12:
-(1)  480/     C1C : 0E                      db 00eh
-(1)  481/     C1D : F8                      db 0f8h
-(1)  482/     C1E : 02                      db 002h
-(1)  483/     C1F : F0                      db 0f0h
-(1)  484/     C20 : 07                      db 007h
-(1)  485/     C21 : F0                      db 0f0h
-(1)  486/     C22 : 07                      db 007h
-(1)  487/     C23 : F8                      db 0f8h
-(1)  488/     C24 : 03                      db 003h
-(1)  489/     C25 : FC                      db 0fch
-(1)  490/     C26 : 01                      db 001h
-(1)  491/     C27 : FE                      db 0feh
+(1)  478/     C1C :                     __graphic14:
+(1)  479/     C1C : 0E                      db 00eh
+(1)  480/     C1D : FD                      db 0fdh
+(1)  481/     C1E : 00                      db 000h
+(1)  482/     C1F : F8                      db 0f8h
+(1)  483/     C20 : 02                      db 002h
+(1)  484/     C21 : FC                      db 0fch
+(1)  485/     C22 : 01                      db 001h
+(1)  486/     C23 : FE                      db 0feh
+(1)  487/     C24 : 00                      db 000h
+(1)  488/     C25 : FF                      db 0ffh
+(1)  489/     C26 :                     __graphic15:
+(1)  490/     C26 : 0F                      db 00fh
+(1)  491/     C27 : BF                      db 0bfh
 (1)  492/     C28 : 00                      db 000h
-(1)  493/     C29 : FF                      db 0ffh
-(1)  494/     C2A :                     __graphic13:
-(1)  495/     C2A : 0F                      db 00fh
-(1)  496/     C2B : 1F                      db 01fh
-(1)  497/     C2C : 40                      db 040h
-(1)  498/     C2D : 0F                      db 00fh
-(1)  499/     C2E : E0                      db 0e0h
-(1)  500/     C2F : 0F                      db 00fh
-(1)  501/     C30 : E0                      db 0e0h
-(1)  502/     C31 : 1F                      db 01fh
-(1)  503/     C32 : C0                      db 0c0h
-(1)  504/     C33 : 3F                      db 03fh
-(1)  505/     C34 : 80                      db 080h
-(1)  506/     C35 : 7F                      db 07fh
-(1)  507/     C36 : 00                      db 000h
-(1)  508/     C37 : FF                      db 0ffh
-(1)  509/     C38 :                     ;        ......X.
-(1)  510/     C38 :                     ;        .....X X
-(1)  511/     C38 :                     ;        ......X 
-(1)  512/     C38 :                     ;        .......X
-(1)  513/     C38 :                     __graphic14:
-(1)  514/     C38 : 0E                      db 00eh
-(1)  515/     C39 : FD                      db 0fdh
-(1)  516/     C3A : 00                      db 000h
-(1)  517/     C3B : F8                      db 0f8h
-(1)  518/     C3C : 02                      db 002h
-(1)  519/     C3D : FC                      db 0fch
-(1)  520/     C3E : 01                      db 001h
-(1)  521/     C3F : FE                      db 0feh
-(1)  522/     C40 : 00                      db 000h
-(1)  523/     C41 : FF                      db 0ffh
-(1)  524/     C42 :                     __graphic15:
-(1)  525/     C42 : 0F                      db 00fh
-(1)  526/     C43 : BF                      db 0bfh
-(1)  527/     C44 : 00                      db 000h
-(1)  528/     C45 : 1F                      db 01fh
-(1)  529/     C46 : 40                      db 040h
-(1)  530/     C47 : 3F                      db 03fh
-(1)  531/     C48 : 80                      db 080h
-(1)  532/     C49 : 7F                      db 07fh
-(1)  533/     C4A : 00                      db 000h
-(1)  534/     C4B : FF                      db 0ffh
-(1)  535/     C4C :                     ; 408
-(1)  536/     C4C :                     
-      94/     C4C :                     
- AS V1.42 Beta [Bld 102] - source file game.asm - page 30 - 7/2/2016 15:13:14
-
-
-      95/     C4C :                     ;	TODO: 	
-      96/     C4C :                     ;			Shooting Princesses :) 
-      97/     C4C :                     ; 			Sort out princess graphics (4 becomes 3, smaller 4)
-      98/     C4C :                     ;			(Put fake heart up there)
-      99/     C4C :                     ; 			(RELEASE)
-     100/     C4C :                     ; 			Add closeness sound effect / heartbeat.
-     101/     C4C :                     ;			Princess movement (for arbitrary placed princess)
-     102/     C4C :                     ;			Put princesses in the maze and play the game :)
-     103/     C4C :                     
- AS V1.42 Beta [Bld 102] - source file game.asm - page 31 - 7/2/2016 15:13:14
+(1)  493/     C29 : 1F                      db 01fh
+(1)  494/     C2A : 40                      db 040h
+(1)  495/     C2B : 3F                      db 03fh
+(1)  496/     C2C : 80                      db 080h
+(1)  497/     C2D : 7F                      db 07fh
+(1)  498/     C2E : 00                      db 000h
+(1)  499/     C2F : FF                      db 0ffh
+(1)  500/     C30 :                     ; 380
+(1)  501/     C30 :                     
+      94/     C30 :                     
+      95/     C30 :                     ;	TODO: 	
+      96/     C30 :                     ; 			Add closeness sound effect / heartbeat.
+      97/     C30 :                     ;			Princess movement (for arbitrary placed princess)
+      98/     C30 :                     ;			Put princesses in the maze and play the game :)
+      99/     C30 :                     
+ AS V1.42 Beta [Bld 102] - source file game.asm - page 30 - 7/2/2016 15:20:01
 
 
   symbol table (* = unused):
@@ -1884,7 +1842,7 @@
  RESETPLAYER :                  23E C |  RETURN :                       3BA C |
  RF :                             F - |  SCANKEYBOARD :                 A80 C |
  SCREEN :                       F00 - |  SPRITEDATA :                   A94 C |
- STACK :                        CE8 - | *TIME :                    15:13:14 - |
+ STACK :                        CE8 - | *TIME :                    15:20:01 - |
  TIMERS :                       CFC - | *TRUE :                           1 - |
 *VERSION :                     142F - |  _MDLOOP :                      1CF C |
  _RDCLEAR :                     182 C |  _RDDRAWBYTEBLOCKS :            19D C |
@@ -1900,15 +1858,15 @@
  __DSGFINISHED :                3B2 C |  __DSGLOOP :                    3A1 C |
  __GRAPHIC00 :                  AB4 C |  __GRAPHIC01 :                  AE6 C |
  __GRAPHIC02 :                  B18 C |  __GRAPHIC03 :                  B3E C |
- AS V1.42 Beta [Bld 102] - source file game.asm - page 32 - 7/2/2016 15:13:14
+ AS V1.42 Beta [Bld 102] - source file game.asm - page 31 - 7/2/2016 15:20:01
 
 
- __GRAPHIC04 :                  B64 C |  __GRAPHIC05 :                  B82 C |
- __GRAPHIC06 :                  BA0 C |  __GRAPHIC07 :                  BB6 C |
- __GRAPHIC08 :                  BCC C |  __GRAPHIC09 :                  BE2 C |
- __GRAPHIC10 :                  BF8 C |  __GRAPHIC11 :                  C0A C |
- __GRAPHIC12 :                  C1C C |  __GRAPHIC13 :                  C2A C |
- __GRAPHIC14 :                  C38 C |  __GRAPHIC15 :                  C42 C |
+ __GRAPHIC04 :                  B64 C |  __GRAPHIC05 :                  B7A C |
+ __GRAPHIC06 :                  B90 C |  __GRAPHIC07 :                  BA0 C |
+ __GRAPHIC08 :                  BB0 C |  __GRAPHIC09 :                  BC6 C |
+ __GRAPHIC10 :                  BDC C |  __GRAPHIC11 :                  BEE C |
+ __GRAPHIC12 :                  C00 C |  __GRAPHIC13 :                  C0E C |
+ __GRAPHIC14 :                  C1C C |  __GRAPHIC15 :                  C26 C |
  __IRQNEXTTIMER :               3E9 C |  __IRQTIMERLOOP :               3E1 C |
  __MPEFFECT1 :                  45A C |  __MPEFFECT2 :                  460 C |
  __MPEXIT :                     487 C |  __MPFINDPRINCESS :             47A C |
@@ -1924,7 +1882,7 @@
     147 symbols
      36 unused symbols
 
- AS V1.42 Beta [Bld 102] - source file game.asm - page 33 - 7/2/2016 15:13:14
+ AS V1.42 Beta [Bld 102] - source file game.asm - page 32 - 7/2/2016 15:20:01
 
 
   defined macros:
@@ -1935,7 +1893,7 @@ RECALL                                | RETURN
 
       4 macros
 
- AS V1.42 Beta [Bld 102] - source file game.asm - page 34 - 7/2/2016 15:13:14
+ AS V1.42 Beta [Bld 102] - source file game.asm - page 33 - 7/2/2016 15:20:01
 
 
   codepages:
@@ -1946,8 +1904,8 @@ STANDARD (0 changed characters)
 
 0.02 seconds assembly time
 
-   1507 lines source file
-   1749 lines incl. macro expansions
+   1468 lines source file
+   1710 lines incl. macro expansions
       2 passes
       0 errors
       0 warnings

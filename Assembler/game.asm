@@ -93,10 +93,6 @@ SpriteData:
 	include graphics.inc 														; all the graphic data
 
 ;	TODO: 	
-;			Shooting Princesses :) 
-; 			Sort out princess graphics (4 becomes 3, smaller 4)
-;			(Put fake heart up there)
-; 			(RELEASE)
 ; 			Add closeness sound effect / heartbeat.
 ;			Princess movement (for arbitrary placed princess)
 ;			Put princesses in the maze and play the game :)
