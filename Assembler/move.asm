@@ -6,9 +6,9 @@
 ; ************************************************************************************************************
 ; ************************************************************************************************************
 
-MOVE_TurnTime = 30
-MOVE_MoveTime = 30
-MOVE_FireTime = 120
+MOVE_TurnTime = 20 																; frames per turn
+MOVE_MoveTime = 20 																; frames per move
+MOVE_FireTime = 180 															; frames between firing
 
 MovePlayer:
 	lri 	rd,moveTimer 														; point RD to move timer
@@ -63,7 +63,9 @@ __MPTimer1:
 	bnz 	__MPExit
 	ldi 	MOVE_FireTime 														; reset that timer.
 	str 	rd 
-
+;
+;	Shooting effect
+;
 	ldi 	0 																	; use program code as random data
 	plo 	rf 																	; drawn in the screen centre to
 	phi 	rf 																	; give a blur effect
@@ -82,9 +84,43 @@ __MPEffect2:
 	ghi 	rf 																	; if not done whole effect go back.
 	xri 	04h
 	bnz 	__MPEffect1
-
-	; 		kill any princesses in range.
-	
+;
+;	Look for a princess to kill
+;
+	lri 	re,ppVector 														; point RE to the player position vector
+	ldi 	map/256 															; RF is pointer to the map
+	phi 	rf
+__MPFindPrincess:	
+	lda 	re 																	; get position + advance
+	plo 	rf 																	; rf now points into map
+	ldn 	rf 																	; read map element
+	shl 																		; check bit 7 (wall)
+	bdf 	__MPExit 															; wall present then exit.	
+	bnz 	__MPKill 															; if non zero kill princess !
+	glo 	re  																; see if done the whole vector
+	xri 	(ppVector+4) & 255
+	bnz 	__MPFindPrincess
 __MPExit:
 	return
-
+;
+;	Kill princess and bump score
+;
+__MPKill:
+	ldi 	00 																	; write zero to princess position
+	str 	rf
+	ldi 	kills01 & 255 														; point RE to kill count
+	plo 	re
+	ldn 	re 		 															; bump score
+	adi 	1
+	str 	re
+	xri 	10 																	; exit if not 10 yet.
+	bnz 	__MPExit
+	str 	re 																	; zero ones
+	inc 	re 																	; point to tens
+	ldn 	re 																	; bump 10s
+	adi 	1
+	str 	re
+	xri 	10 																	; reached 99....
+	bnz 	__MPexit
+	str 	re 																	; zero tens, wraps around :)
+	br 		__MPexit

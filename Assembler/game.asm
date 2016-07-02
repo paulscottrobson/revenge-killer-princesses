@@ -17,13 +17,14 @@
 screen =  	0F00h																; this is the display screen.
 buffer = 	0E00h																; this page has the buffer in it
 map = 		0D00h 																; this page has the map in it.
-stack = 	0CF0h 																; stack top
+stack = 	0CE8h 																; stack top
 
 timers = 	0CFCh 																; 4 timers must end at page top.
 ppvector =  0CF4h																; player position vector.
 player = 	0CF3h 																; player offset in map
 direction = 0CF2h 																; 0 = right,1 = down, 2 = left, 3 = up
-kills =     0CF1h 																; dead princesses.
+kills10 =   0CF1h 																; dead princesses.
+kills01 = 	0CF0h
 
 moveTimer = timers 																; first timer controls move/turn.
 fireTimer = timers+1 															; second timer controls firing

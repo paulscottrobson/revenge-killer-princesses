@@ -14,9 +14,9 @@ ResetPlayer:
 	stxd
 	ldi 	2 																	; direction 2
 	stxd
-	ldi 	0
-	stxd 																		; kills 0
-
+	ldi 	0 	
+	stxd 																		; kills 0 (2 digits)
+	stxd 
 	ldi 	0FFh 																; point to top of timers
 	plo 	rf
 	ldi 	0h 																	; clear the four timers
