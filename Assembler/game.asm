@@ -7,6 +7,7 @@
 ;								  Written by Paul Robson June/July 2016
 ;	
 ;	  Written for the Cosmac VIP but should port to other 1802/1861 devices with sufficient RAM memory.
+;	  Main porting issue is the keyboard routine.
 ;
 ; ************************************************************************************************************
 ; ************************************************************************************************************
@@ -22,6 +23,9 @@ timers = 	0CFCh 																; 4 timers must end at page top.
 ppvector =  0CF4h																; player position vector.
 player = 	0CF3h 																; player offset in map
 direction = 0CF2h 																; 0 = right,1 = down, 2 = left, 3 = up
+
+moveTimer = timers 																; first timer controls move/turn.
+fireTimer = timers+1 															; second timer controls firing
 
 	ret 																		; 1802 interrupts on. 
 	nop
@@ -51,19 +55,8 @@ Main:
 
 Loop:
 	call 	r4,Repaint
-	lri 	r4,Direction
-	ldn 	r4
-	adi 	1
-	ani 	3
-	str 	r4
-	inc 	r8
-
-	call 	r4,ScanKeyboard
-	xri 	0Fh
-	bnz 	Loop
-
-wait:
-	br 		wait
+	call	r4,MovePlayer
+	br 		Loop
 
 	org 	100h
 
@@ -90,6 +83,7 @@ code:
 ; 	Block 3 
 ;
 	org 	code+300h
+	include move.asm
 
 	org  	0A80h 																; put gfx data at the end.	
 	include keyboard.asm  														; keyboard driver here so can port.
@@ -97,7 +91,8 @@ SpriteData:
 	include graphics.inc 														; all the graphic data
 
 ;	TODO: 	
-; 			Player Movement
-; 			Add closeness sound effect / heartbeat
-;			Princess movement (for arbitrary placed princess)
+;			Shooting effect (think ....)
+;			Shooting Princesses :) 
+; 			Add closeness sound effect / heartbeat.
 ;			Put princesses in the maze.
+;			Princess movement (for arbitrary placed princess)

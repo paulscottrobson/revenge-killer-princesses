@@ -7,11 +7,10 @@
 ; ************************************************************************************************************
 ; ************************************************************************************************************
 
-Key_Forward = 2 																; keyboard allocation 
-Key_Left = 4 																	
-Key_Right = 6
-Key_Around = 8
-Key_Fire = 15
+Key_Forward = 0 																; keyboard allocation 
+Key_Left = 0Ah 																	; these keys are chosen for a PC
+Key_Right = 0Dh 																; keyboard emulation not a VIP
+Key_Fire = 8  																	; which would use 2,4,6,F (maybe)
 
 ScanKeyboard:
 	sex 	r2 																	; use R2 as index
