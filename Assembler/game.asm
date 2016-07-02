@@ -23,6 +23,7 @@ timers = 	0CFCh 																; 4 timers must end at page top.
 ppvector =  0CF4h																; player position vector.
 player = 	0CF3h 																; player offset in map
 direction = 0CF2h 																; 0 = right,1 = down, 2 = left, 3 = up
+kills =     0CF1h 																; dead princesses.
 
 moveTimer = timers 																; first timer controls move/turn.
 fireTimer = timers+1 															; second timer controls firing
@@ -91,8 +92,10 @@ SpriteData:
 	include graphics.inc 														; all the graphic data
 
 ;	TODO: 	
-;			Shooting effect (think ....)
 ;			Shooting Princesses :) 
+; 			Sort out princess graphics (4 becomes 3, smaller 4)
+;			(Put fake heart up there)
+; 			(RELEASE)
 ; 			Add closeness sound effect / heartbeat.
-;			Put princesses in the maze.
 ;			Princess movement (for arbitrary placed princess)
+;			Put princesses in the maze and play the game :)

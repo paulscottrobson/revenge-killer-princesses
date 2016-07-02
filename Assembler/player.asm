@@ -12,8 +12,10 @@ ResetPlayer:
 	sex 	rf
 	ldi 	7*16+7																; player at (7,7)
 	stxd
-	ldi 	2 																	; direction 2 
+	ldi 	2 																	; direction 2
 	stxd
+	ldi 	0
+	stxd 																		; kills 0
 
 	ldi 	0FFh 																; point to top of timers
 	plo 	rf

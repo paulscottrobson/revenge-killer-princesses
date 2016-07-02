@@ -64,7 +64,25 @@ __MPTimer1:
 	ldi 	MOVE_FireTime 														; reset that timer.
 	str 	rd 
 
-	; 		do the shooting f/x
+	ldi 	0 																	; use program code as random data
+	plo 	rf 																	; drawn in the screen centre to
+	phi 	rf 																	; give a blur effect
+__MPEffect1:
+	lri 	re,Screen+8*8+3 													; middle left
+__MPEffect2: 
+	lda 	rf 																	; copy byte from RF into two bytes
+	str 	re
+	inc 	re
+	str 	re
+	glo 	re 																	; next line down
+	adi 	7
+	plo 	re
+	xri 	24*8+3 																; reached bottom
+	bnz 	__MPEffect2
+	ghi 	rf 																	; if not done whole effect go back.
+	xri 	04h
+	bnz 	__MPEffect1
+
 	; 		kill any princesses in range.
 	
 __MPExit:
