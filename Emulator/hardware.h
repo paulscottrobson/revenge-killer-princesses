@@ -23,5 +23,5 @@ void HWIWriteKeypadLatch(BYTE8 writeValue);
 BYTE8 HWIProcessKey(BYTE8 key,BYTE8 isRunMode);
 void HWIEndFrame(void);
 void HWIReset(void);
-
+void HWISetSound(int on);
 #endif

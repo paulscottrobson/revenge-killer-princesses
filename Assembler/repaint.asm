@@ -63,7 +63,7 @@ __RPFoundPrincess:
 	recall 	rd
 
 __RPStatus:
-	; draw status.
+	call 	r5,CalculateHeartbeat 												; calculate / process heartbeat
 
 	ldi 	Screen/256 															; not double buffered ?
 	xri 	Buffer/256

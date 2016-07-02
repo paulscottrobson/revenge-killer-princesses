@@ -56,4 +56,11 @@ __IRQTimerLoop:
 __IRQNextTimer:
 	glo 	r0 																	; do all the tiners
 	bnz 	__IRQTimerLoop
+;	dec 	r0 																	; point to Q timer
+;	lda 	r0 																	; read it
+;	bz 		__IRQOff 															; and set; Q accordingly.
+;	seq
 	br 		Return
+__IRQOff:
+;	req
+;	br 		Return

@@ -20,6 +20,7 @@ map = 		0D00h 																; this page has the map in it.
 stack = 	0CE8h 																; stack top
 
 timers = 	0CFCh 																; 4 timers must end at page top.
+
 ppvector =  0CF4h																; player position vector.
 player = 	0CF3h 																; player offset in map
 direction = 0CF2h 																; 0 = right,1 = down, 2 = left, 3 = up
@@ -85,14 +86,18 @@ code:
 ; 	Block 3 
 ;
 	org 	code+300h
-	include move.asm
+	include move.asm 															; player move/fire ($A5)
+	include keyboard.asm  														; keyboard driver ($14)
+;
+;	Block 4
+;
+	org 	code+400h
+	include heartbeat.asm 														; heartbeat code ($68)
 
-	org  	0A80h 																; put gfx data at the end.	
-	include keyboard.asm  														; keyboard driver here so can port.
+	org 	code+500h
 SpriteData:	
 	include graphics.inc 														; all the graphic data
 
 ;	TODO: 	
-; 			Add closeness sound effect / heartbeat.
 ;			Princess movement (for arbitrary placed princess)
 ;			Put princesses in the maze and play the game :)

@@ -78,6 +78,7 @@ static inline void __Write(WORD16 addr,WORD16 data)
 
 #define EFLAG1() 	(1)																// EF1 is always set.
 #define EFLAG3() 	(HWIReadKeypadPressed() != 0)									// EF4 is the IN Key.
+#define OUTPORTQ(currQ,newQ) if (currQ != newQ) HWISetSound(newQ)
 
 #include "__1802_ports.h"															// Default connections.
 
