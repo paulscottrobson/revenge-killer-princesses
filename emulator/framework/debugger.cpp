@@ -12,7 +12,6 @@
 #include <stdio.h>
 #include <ctype.h>
 #include "gfx.h"
-#include "sys_processor.h"
 #include "debugger.h"
 	
 static int isInitialised = 0; 														// Flag to initialise first time

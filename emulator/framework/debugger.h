@@ -15,6 +15,7 @@
 void DBGVerticalLabel(int x,int y,const char *labels[],int fgr,int bgr);
 void DBGDefineKey(int keyID,int gfxKey);
 
+#include "sys_processor.h"
 #include "sys_debug_system.h"
 
 #define DBGKEY_RESET	(0)															// Debugger key IDs.

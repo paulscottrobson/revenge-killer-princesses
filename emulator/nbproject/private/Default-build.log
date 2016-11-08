@@ -1,7 +1,0 @@
-g++ -c -DINCLUDE_DEBUGGING_SUPPORT -Iframework -I/usr/include/SDL2 -I. -w -o framework/main.o framework/main.cpp
-g++ -c -DINCLUDE_DEBUGGING_SUPPORT -Iframework -I/usr/include/SDL2 -I. -w -o framework/gfx.o framework/gfx.cpp
-g++ -c -DINCLUDE_DEBUGGING_SUPPORT -Iframework -I/usr/include/SDL2 -I. -w -o framework/debugger.o framework/debugger.cpp
-g++ -c -DINCLUDE_DEBUGGING_SUPPORT -Iframework -I/usr/include/SDL2 -I. -w -o sys_processor.o sys_processor.cpp
-g++ -c -DINCLUDE_DEBUGGING_SUPPORT -Iframework -I/usr/include/SDL2 -I. -w -o hardware.o hardware.cpp
-g++ -c -DINCLUDE_DEBUGGING_SUPPORT -Iframework -I/usr/include/SDL2 -I. -w -o sys_debug_elf.o sys_debug_elf.cpp
-g++ framework/main.o framework/gfx.o framework/debugger.o sys_processor.o hardware.o sys_debug_elf.o -lSDL2 -o elf2

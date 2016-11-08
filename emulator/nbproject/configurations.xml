@@ -1,71 +1,188 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configurationDescriptor version="100">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
-    <df root="." name="0">
-      <df name="framework">
-        <in>debugger.cpp</in>
-        <in>gfx.cpp</in>
-        <in>main.cpp</in>
-      </df>
-      <in>hardware.cpp</in>
-      <in>sys_debug_vip.cpp</in>
-      <in>sys_processor.cpp</in>
-    </df>
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <logicalFolder name="framework" displayName="framework" projectFiles="true">
+        <itemPath>framework/debugger.cpp</itemPath>
+        <itemPath>framework/debugger.h</itemPath>
+        <itemPath>framework/font.h</itemPath>
+        <itemPath>framework/gfx.cpp</itemPath>
+        <itemPath>framework/gfx.h</itemPath>
+        <itemPath>framework/main.cpp</itemPath>
+      </logicalFolder>
+      <itemPath>__1802mnemonics.h</itemPath>
+      <itemPath>__1802opcodes.h</itemPath>
+      <itemPath>__1802ports.h</itemPath>
+      <itemPath>__1802support.h</itemPath>
+      <itemPath>hardware.h</itemPath>
+      <itemPath>monitor_rom.h</itemPath>
+      <itemPath>sys_debug_system.h</itemPath>
+      <itemPath>sys_processor.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <logicalFolder name="framework" displayName="framework" projectFiles="true">
+      </logicalFolder>
+      <itemPath>hardware.cpp</itemPath>
+      <itemPath>sys_debug_vip.cpp</itemPath>
+      <itemPath>sys_processor.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
                    projectFiles="false"
                    kind="IMPORTANT_FILES_FOLDER">
-      <itemPath>nbproject/private/launcher.properties</itemPath>
-      <itemPath>makefile</itemPath>
+      <itemPath>Makefile</itemPath>
     </logicalFolder>
   </logicalFolder>
-  <sourceFolderFilter>^(nbproject)$</sourceFolderFilter>
   <sourceRootList>
-    <Elem>.</Elem>
+    <Elem>framework</Elem>
   </sourceRootList>
-  <projectmakefile>makefile</projectmakefile>
+  <projectmakefile>Makefile</projectmakefile>
   <confs>
-    <conf name="Default" type="0">
+    <conf name="Debug" type="1">
       <toolsSet>
         <compilerSet>default</compilerSet>
-        <dependencyChecking>false</dependencyChecking>
+        <dependencyChecking>true</dependencyChecking>
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
-      <codeAssistance>
-      </codeAssistance>
-      <makefileType>
-        <makeTool>
-          <buildCommandWorkingDir>.</buildCommandWorkingDir>
-          <buildCommand>${MAKE} -f makefile</buildCommand>
-          <cleanCommand>${MAKE} -f makefile clean</cleanCommand>
-          <executablePath>vip</executablePath>
-          <ccTool>
-            <incDir>
-              <pElem>framework</pElem>
-              <pElem>/usr/include/SDL2</pElem>
-              <pElem>.</pElem>
-            </incDir>
-            <preprocessorList>
-              <Elem>INCLUDE_DEBUGGING_SUPPORT</Elem>
-            </preprocessorList>
-          </ccTool>
-        </makeTool>
-        <preBuild>
-          <preBuildCommandWorkingDir>.</preBuildCommandWorkingDir>
-          <preBuildCommand></preBuildCommand>
-        </preBuild>
-      </makefileType>
+      <compileType>
+        <cTool>
+          <incDir>
+            <pElem>/usr/include/SDL</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>/usr/include/SDL2</pElem>
+            <pElem>.</pElem>
+            <pElem>./framework</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>INCLUDE_DEBUGGING_SUPPORT</Elem>
+          </preprocessorList>
+        </ccTool>
+        <linkerTool>
+          <linkerLibItems>
+            <linkerLibFileItem>/usr/lib/libSDL2.so</linkerLibFileItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+      <item path="__1802mnemonics.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="__1802opcodes.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="__1802ports.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="__1802support.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="framework/debugger.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="framework/debugger.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="framework/font.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="framework/gfx.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="framework/gfx.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="framework/main.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="hardware.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="hardware.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="monitor_rom.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="sys_debug_system.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="sys_debug_vip.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="sys_processor.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="sys_processor.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>/usr/include/SDL</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>/usr/include/SDL2</pElem>
+            <pElem>.</pElem>
+            <pElem>./framework</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>INCLUDE_DEBUGGING_SUPPORT</Elem>
+          </preprocessorList>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+        <linkerTool>
+          <linkerLibItems>
+            <linkerLibFileItem>/usr/lib/libSDL2.so</linkerLibFileItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+      <item path="__1802mnemonics.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="__1802opcodes.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="__1802ports.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="__1802support.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="framework/debugger.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="framework/debugger.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="framework/font.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="framework/gfx.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="framework/gfx.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="framework/main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hardware.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hardware.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="monitor_rom.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="sys_debug_system.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="sys_debug_vip.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="sys_processor.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="sys_processor.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>
