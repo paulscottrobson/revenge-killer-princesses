@@ -1,7 +1,7 @@
 // *******************************************************************************************************************************
 // *******************************************************************************************************************************
 //
-//		Name:		sys_debug_elf.c
+//		Name:		sys_debug_vip.c
 //		Purpose:	Debugger Code (System Dependent)
 //		Created:	1st November 2016
 //		Author:		Paul Robson (paul@robsons->org.uk)
@@ -85,9 +85,6 @@ void DBGXRender(int *address,int showDisplay) {
 		}
 		GFXString(GRID(5,row),buffer,GRIDSIZE,isPC ? DBGC_HIGHLIGHT:DBGC_DATA,-1);	// Print the mnemonic
 	}
-
-	int y = showDisplay ? 1 : 7;
-	GFXNumber(GRID(23,y),HWIGetDigitDisplay(),16,2,GRIDSIZE*4,0xF00,0x000);
 
 	if (showDisplay) {
 		p = HWIGetPageAddress();														// wherever the screen is, it's now in R0.

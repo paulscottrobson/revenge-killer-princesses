@@ -1,7 +1,7 @@
-SRCS = framework/main.cpp framework/gfx.cpp framework/debugger.cpp sys_processor.cpp hardware.cpp sys_debug_elf.cpp
+SRCS = framework/main.cpp framework/gfx.cpp framework/debugger.cpp sys_processor.cpp hardware.cpp sys_debug_vip.cpp
 OBJS=$(subst .cpp,.o,$(SRCS))
 
-EXE_NAME = elf2
+EXE_NAME = vip
 
 %.o: %.cpp *.h
 	g++ -c -DINCLUDE_DEBUGGING_SUPPORT -Iframework -I/usr/include/SDL2 -I. -w -o $(patsubst %.cpp,%.o,$<) $<

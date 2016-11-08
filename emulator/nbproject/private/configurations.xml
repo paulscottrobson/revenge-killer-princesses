@@ -17,9 +17,10 @@
       <in>count.asm</in>
       <in>hardware.cpp</in>
       <in>hardware.h</in>
+      <in>monitor_rom.h</in>
       <in>starship.asm</in>
-      <in>sys_debug_elf.cpp</in>
       <in>sys_debug_system.h</in>
+      <in>sys_debug_vip.cpp</in>
       <in>sys_processor.cpp</in>
       <in>sys_processor.h</in>
       <in>test.asm</in>

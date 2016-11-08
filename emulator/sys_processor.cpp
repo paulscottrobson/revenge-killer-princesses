@@ -38,17 +38,18 @@
 static BYTE8 ramMemory[MEMORYSIZE];													// R/W Memory
 static WORD16 displayLines; 														// Scanlines displayed.
 
+static BYTE8 romMonitor[512] = {
+    #include "monitor_rom.h"
+};
+
 // *******************************************************************************************************************************
 //													   Port Interfaces
 // *******************************************************************************************************************************
 
 #define INPORT1() 	(HWISetScreenOn(1),DEFAULT_BUS_VALUE)							// INP 1 screen on
-#define INPORT4()	HWIReadKeypadLatch()											// INP 4 Keypad latch.
 #define OUTPORT1(n)	HWISetScreenOn(0)												// OUT 1 screen off
-#define OUTPORT4(n) HWISetDigitDisplay(n)											// OUT 4 led display
 
 #define EFLAG1() 	(1)																// EF1 is always set.
-#define EFLAG4() 	(HWIIsInPressed() != 0)											// EF4 is the IN Key.
 
 #include "__1802ports.h"															// Default connections.
 
@@ -65,7 +66,15 @@ static inline void _Write(void);
 #include "__1802support.h"
 
 static inline void _Read(void) {
-	MB = (MA < MEMORYSIZE) ? ramMemory[MA] : DEFAULT_BUS_VALUE; 					// Reading RAM (0000 up)
+    if (MA < MEMORYSIZE) {
+        MB = ramMemory[MA];
+        return;
+    }
+    if (MA >= 0x8000 && MA < 0x8200) {
+        MB = romMonitor[MA & 0x1FF];
+        return;
+    }
+	MB = DEFAULT_BUS_VALUE;
 }
 
 static inline void _Write(void) {
@@ -81,6 +90,12 @@ void CPUReset(void) {
 	__1802Reset();																	// Reset CPU
 	Cycles = 2000;																	// So no immediate Interrupt
 	displayLines = 128; 															// Number of display lines CPU gen.
+    
+    R0 = 0x0008;
+    R2 = 0x8008;
+    X = P = 2;
+    pX = pP = &R2;
+    romMonitor[0x22] = 0x30;
 }
 
 // *******************************************************************************************************************************

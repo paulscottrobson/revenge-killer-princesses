@@ -8,7 +8,7 @@
         <in>main.cpp</in>
       </df>
       <in>hardware.cpp</in>
-      <in>sys_debug_elf.cpp</in>
+      <in>sys_debug_vip.cpp</in>
       <in>sys_processor.cpp</in>
     </df>
     <logicalFolder name="ExternalFiles"
@@ -38,7 +38,7 @@
           <buildCommandWorkingDir>.</buildCommandWorkingDir>
           <buildCommand>${MAKE} -f makefile</buildCommand>
           <cleanCommand>${MAKE} -f makefile clean</cleanCommand>
-          <executablePath>elf2</executablePath>
+          <executablePath>vip</executablePath>
           <ccTool>
             <incDir>
               <pElem>framework</pElem>
@@ -63,7 +63,7 @@
       </item>
       <item path="hardware.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="sys_debug_elf.cpp" ex="false" tool="1" flavor2="0">
+      <item path="sys_debug_vip.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="sys_processor.cpp" ex="false" tool="1" flavor2="0">
       </item>
